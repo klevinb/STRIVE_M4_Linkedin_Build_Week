@@ -35,7 +35,7 @@ class SideContent extends React.Component {
 
     render() {
         return (
-            <Col md={3} className="pl-4 pt-5">
+            <Col md={3} className=" pl-4 pt-4">
                 <Row className="pb-5 d-flex flex-column ">
                     <Col className="col pt-3 border-bottom d-flex">
                         <p>Edit public profile and URL</p>
@@ -47,7 +47,7 @@ class SideContent extends React.Component {
                     </Col>
                 </Row>
                 <p>People also viewed</p>
-                {this.state.users.map((user, i) => {
+                {this.state.users.slice(0, 4).map((user, i) => {
                     return (
                         <Row className="pb-3" key={i}>
                             <Col md={4}>

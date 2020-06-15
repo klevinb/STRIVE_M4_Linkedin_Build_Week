@@ -25,7 +25,7 @@ class App extends Component {
   render() {
     return (
       <div className="App" >
-        <Container fluid>
+        <Container className="m-0 p-0" fluid>
           <NavBar />
           {console.log(this.state.profiles)}
           {this.state.profiles && this.state.profiles.filter(profile => profile.name === "Klevin").map(profile => <Content key={profile._id} profileInfo={profile} />)}

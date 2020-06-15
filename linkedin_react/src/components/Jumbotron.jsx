@@ -7,7 +7,7 @@ import { GiCancel } from 'react-icons/gi'
 
 function JumBotron(props) {
     return (
-        <Col md={9} className="contentCol d-flex justify-content-center mt-5">
+        <Col md={9} className="contentCol d-flex justify-content-center mt-4">
             {console.log(props.profileInfo)}
             <div id="jumbotronMain" >
                 <div id='cameraIcon'>
