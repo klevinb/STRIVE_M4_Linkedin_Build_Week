@@ -1,0 +1,123 @@
+.content {
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-left: 100px !important;
+}
+
+.contentCol {
+    border: 0.5px solid lightgray;
+    padding: 0 !important;
+    border-radius: 3px;
+}
+
+.contentCol button {
+    background-color: #0073b1 !important;
+    border-radius: 0;
+    font-size: 20px;
+}
+
+.contentCol button:hover {
+    background-color: #00649b !important;
+
+}
+
+#secondButton:hover {
+    border: 1px solid darkslategrey;
+}
+
+.contentCol svg {
+    font-size: 35px;
+    margin-left: 20px;
+    color:  #0073b1 !important;
+}
+
+.contentCol svg:hover {
+    background-color: #e5f5fc;
+    border-radius: 20%;
+}
+
+.contentCol #secondButton{
+    background-color: transparent !important;
+    border-radius: 0;
+    color: gray;
+    border: 1px solid grey;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+#status {
+    margin-left: 100px;
+}
+
+#status p{
+    font-size: 20px;
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+#moreInfo {
+    border: 2px dashed lightgray !important;
+    width: 100%;
+    padding: 10px;
+}
+#moreInfo p{
+    margin: 0;
+}
+#moreInfo span {
+    font-weight: 600;
+}
+
+#status svg {
+    font-size: 25px;
+    color: gray !important;
+    background-color: lightgray !important;
+}
+
+
+#profilePhoto {
+    border: 5px solid lightgray;
+    border-radius: 100px;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    position: absolute;
+    top: 25%;
+    left: 3%;
+}
+#profilePhoto img{
+    object-fit: fill;
+    height: 100%;
+    width: 100%;
+}
+#jumbotron {
+    height: 250px !important;
+    overflow: hidden;
+}
+#firstCol {
+    padding-top: 100px;
+}
+
+#jumbotronMain #cameraIcon svg {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    background-color: whitesmoke;
+    border-radius: 30%;
+}
+
+#moreInfo{
+    position: relative;
+}
+
+#xbutton svg {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-size: 30px;
+    color: gray !important;
+
+    padding: 5px;
+}
+
+#xbutton {
+}
