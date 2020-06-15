@@ -14,7 +14,7 @@ function JumBotron(props) {
                     <TiCameraOutline />
                 </div>
                 <div id="jumbotron">
-                    <Image fluid src="/assets/jumbotronCover.jpeg" />
+                    <Image fluid className="w-100" src="/assets/jumbotronCover.jpeg" />
                 </div>
                 <div id="profilePhoto">
                     <Image src={props.profileInfo.image} />

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavDropdown, Form, FormControl, Container } from 'react-bootstrap';
+import { Nav, Image, Navbar, NavDropdown, Form, FormControl, Container } from 'react-bootstrap';
 import './NavBar.css';
-import { FaLinkedin, FaSearch, FaHome, FaSuitcase, FaVideo } from 'react-icons/fa';
+import { FaSearch, FaHome, FaSuitcase, FaVideo } from 'react-icons/fa';
 
 
 
@@ -9,12 +9,12 @@ class NavBar extends Component {
   render() {
     return (
 
-      <Container className="m-0 p-0" fluid>
+      <Container className="m-0 p-0 pb-2" fluid>
 
         <Navbar bg="dark" expand="lg" className='navBar'>
           <div className='container'>
             <div className="d-flex">
-              <FaLinkedin className='linkedIn' />
+              <Image src="/assets/logo.png" style={{ width: "70px" }} />
               <Navbar.Brand href="#home">
 
               </Navbar.Brand>

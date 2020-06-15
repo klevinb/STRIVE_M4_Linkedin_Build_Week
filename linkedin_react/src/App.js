@@ -30,7 +30,7 @@ class App extends Component {
           <NavBar />
           {console.log(this.state.profiles)}
           {this.state.profiles && this.state.profiles.filter(profile => profile.name === "Klevin").map(profile => <Content key={profile._id} profileInfo={profile} />)}
-
+          <Footer />
         </Container>
       </div>
     );
