@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Content from './components/Content'
 import { Container } from 'react-bootstrap'
-import SideContent from './components/SideContent'
 
 class App extends Component {
 
