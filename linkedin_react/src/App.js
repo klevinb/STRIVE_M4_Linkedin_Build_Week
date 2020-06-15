@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Content from './components/Content'
 import { Container } from 'react-bootstrap'
+import NavBar from './components/NavBar';
 
 class App extends Component {
 
@@ -25,6 +26,7 @@ class App extends Component {
     return (
       <div className="App" >
         <Container fluid>
+          <NavBar />
           {console.log(this.state.profiles)}
           {this.state.profiles && this.state.profiles.filter(profile => profile.name === "Klevin").map(profile => <Content key={profile._id} profileInfo={profile} />)}
 
