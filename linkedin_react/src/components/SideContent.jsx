@@ -1,5 +1,6 @@
 import React from 'react'
 import { Row, Col, Container } from 'react-bootstrap'
+import { AiOutlineQuestionCircle } from 'react-icons/ai'
 
 class SideContent extends React.Component {
 
@@ -37,13 +38,17 @@ class SideContent extends React.Component {
         return (
             <Col md={3} className=" pl-4 pt-4">
                 <Row className="pb-5 d-flex flex-column ">
-                    <Col className="col pt-3 border-bottom d-flex">
-                        <p>Edit public profile and URL</p>
-                        <i className="fa fa-question-circle-o ml-auto"></i>
+                    <Col className="col pt-3 border-bottom">
+                        <div className="d-flex justify-content-between">
+                            <p>Edit public profile and URL</p>
+                            <AiOutlineQuestionCircle />
+                        </div>
                     </Col>
-                    <Col className="col pt-3 border-bottom d-flex">
-                        <p>Add profile in another language</p>
-                        <i className="fa fa-question-circle-o ml-auto"></i>
+                    <Col className="col pt-3 border-bottom">
+                        <div className="d-flex justify-content-between">
+                            <p>Add profile in another language</p>
+                            <AiOutlineQuestionCircle />
+                        </div>
                     </Col>
                 </Row>
                 <p>People also viewed</p>

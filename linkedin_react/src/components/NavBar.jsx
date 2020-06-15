@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Nav, Image, Navbar, NavDropdown, Form, FormControl, Container } from 'react-bootstrap';
 import './NavBar.css';
-import { FaSearch, FaHome, FaSuitcase, FaVideo } from 'react-icons/fa';
+import { FaSearch, FaHome, FaSuitcase, FaUserFriends, FaVideo } from 'react-icons/fa';
+import { BsChatSquareDots } from 'react-icons/bs'
+import { AiOutlineBell } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 
 
 
@@ -34,38 +37,48 @@ class NavBar extends Component {
               <Navbar.Collapse id="basic-navbar-nav">
 
                 <Nav className="mr-auto" className='text-white'>
-                  <Nav.Link className='text-white' href="#home">
+                  <Link className='text-white mr-2' to="/" exact >
                     <FaHome />
-                    Home</Nav.Link>
-                  <Nav.Link className='text-white'>
+                    Home
+                  </Link>
 
-                    My Network</Nav.Link>
-                  <Nav.Link className='text-white'>
+                  <Link className='text-white mr-2' to="/my-network" >
+                    <FaUserFriends />
+                    My Network
+                  </Link>
+                  <Link className='text-white mr-2' to="/my-network" >
                     <FaSuitcase />
-                    Jobs</Nav.Link>
-                  <Nav.Link className='text-white'>
+                    Jobs
+                  </Link>
+                  <Link className='text-white mr-2' to="/my-network" >
+                    <BsChatSquareDots />
+                    Messaging
+                  </Link>
+                  <Link className='text-white mr-2' to="/my-network" >
+                    <AiOutlineBell />
+                    Notifications
+                  </Link>
 
-                    Messaging</Nav.Link>
-                  <Nav.Link className='text-white'>
-
-                    Notifications</Nav.Link>
-                  <NavDropdown className='text-white' title="Dropdown" id="basic-nav-dropdown" title='Me'>
-                    <NavDropdown.Item href="#action/3.1">My</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                  <NavDropdown title="Dropdown" id="basic-nav-dropdown" title='Me'>
+                    <NavDropdown.Item >My</NavDropdown.Item>
+                    <NavDropdown.Item >Another action</NavDropdown.Item>
+                    <NavDropdown.Item >Something</NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                    <NavDropdown.Item >Separated link</NavDropdown.Item>
                   </NavDropdown>
                   <NavDropdown title="Dropdown" id="basic-nav-dropdown" title='Work'>
-                    <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                    <NavDropdown.Item >Action</NavDropdown.Item>
+                    <NavDropdown.Item >Another action</NavDropdown.Item>
+                    <NavDropdown.Item >Something</NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                    <NavDropdown.Item >Separated link</NavDropdown.Item>
                   </NavDropdown>
-                  <Nav.Link className='text-white' href="#link">
+
+                  <Link className='text-white mr-2' to="/my-network" >
                     <FaVideo />
-                    Learning</Nav.Link>
+                    Learning
+                  </Link>
+
                 </Nav>
 
               </Navbar.Collapse>

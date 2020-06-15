@@ -3,6 +3,7 @@ import Content from './components/Content'
 import { Container } from 'react-bootstrap'
 import NavBar from './components/NavBar';
 import Footer from "./components/Footer"
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 class App extends Component {
 
@@ -25,14 +26,22 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App" >
-        <Container className="m-0 p-0" fluid>
-          <NavBar />
-          {console.log(this.state.profiles)}
-          {this.state.profiles && this.state.profiles.filter(profile => profile.name === "Klevin").map(profile => <Content key={profile._id} profileInfo={profile} />)}
-          <Footer />
-        </Container>
-      </div>
+      <Router>
+        <div className="App" >
+          <Container className="m-0 p-0" fluid>
+            <NavBar />
+
+            {this.state.profiles && this.state.profiles.filter(profile => profile.name === "Klevin").map(profile =>
+              <Route path="/" exact>
+
+                <Content key={profile._id} profileInfo={profile} />
+              </Route>
+
+            )}
+            <Footer />
+          </Container>
+        </div>
+      </Router>
     );
   }
 }
