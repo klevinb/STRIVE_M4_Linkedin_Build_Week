@@ -1,84 +1,86 @@
 import React, { Component } from 'react'
 import "./footerstyle.css"
-import {Container, Row, Col, Form} from "react-bootstrap"
+import { Container, Row, Col, Image } from "react-bootstrap"
+import { Link } from 'react-router-dom'
 
 export class Footer extends Component {
   render() {
     return (
       <Container className="containers">
-        <img src="assets/linkedin-logo.png" className="mt-4"/>
+        <Image src="assets/linkedin-logo.png" className="mt-4" />
         <Row className="mt-4 flex-column">
-          
-            <div className="d-flex">
-              <Col xs={2}>
-                <div className="d-flex flex-column">
-                  <a href="#">About</a>
-                  <a href="#">Community Guidelines</a>
-                  <a href="#">
-                    
-                    <select id="privacy">
-                      <option>
-                        Privacy and Terms
-                      </option>
-                    </select>
-                  </a>
-                  <a href="#">Sales Solutions</a>
-                  <a>Safety Center</a>
-                </div>
-              </Col>
 
-              <Col xs={2}>
-                <div className="d-flex flex-column">
-                  <a href="#">Accessibility</a>
-                  <a href="#">Careers</a>
-                  <a href="#">Ad Choices</a>
-                  <a href="#">Mobile</a>
-                </div>  
-              </Col>
+          <div className="d-flex">
+            <Col xs={2}>
+              <div className="d-flex flex-column">
+                <Link to="/">About</Link>
+                <Link to="/">Community Guidelines</Link>
+                <Link to="/">
 
-              <Col xs={2}>
-                <div className="d-flex flex-column">
-                  <a href="#">Talent Solutions</a>
-                  <a href="#">Marketing Solutions</a>
-                  <a href="#">Advertising</a>
-                  <a href="#">Small Business</a>
-                </div>
-              </Col>
-
-              <Col xs={3}>
-                <div className="d-flex flex-column">
-                  <a href="#">
-                    Questions?
-                    <p href="#">Visit our Help Center.</p>
-                  </a>
-                  <a href="#">
-                    Manage your account and privacy
-                    <p href="#">Go to your Settings.</p>
-                  </a>
-                  
-                </div>
-              </Col>
-
-              <Col xs={3}>
-                <div className="d-flex flex-column">
-                  
-                  <label>Select Language</label>
-                  <select>
+                  <select id="privacy">
                     <option>
-                      English (english)
-                    </option>
+                      Privacy and Terms
+                      </option>
                   </select>
-                </div>
-              </Col>
-            </div>
+                </Link>
+                <Link to="/">Sales Solutions</Link>
+                <Link to="/">Safety Center</Link>
+              </div>
+            </Col>
 
-            
-              <p className="ml-2">LinkedIn Corporation © 2020</p>
-            
-          
+            <Col xs={2}>
+              <div className="d-flex flex-column">
+                <Link to="/">Accessibility</Link>
+                <Link to="/">Accessibility</Link>
+                <Link to="/">Careers</Link>
+                <Link to="/">Ad Choices</Link>
+                <Link to="/">Mobile</Link>
+              </div>
+            </Col>
+
+            <Col xs={2}>
+              <div className="d-flex flex-column">
+                <Link to="/">Talent Solutions</Link>
+                <Link to="/">Marketing Solutions</Link>
+                <Link to="/">Advertising</Link>
+                <Link to="/">Small Business</Link>
+              </div>
+            </Col>
+
+            <Col xs={3}>
+              <div className="d-flex flex-column">
+                <Link to="/">
+                  Questions?
+                    <p href="#">Visit our Help Center.</p>
+                </Link>
+                <Link to="/">
+                  Manage your account and privacy
+                    <p href="#">Go to your Settings.</p>
+                </Link>
+
+              </div>
+            </Col>
+
+            <Col xs={3}>
+              <div className="d-flex flex-column">
+
+                <label>Select Language</label>
+                <select>
+                  <option>
+                    English (english)
+                    </option>
+                </select>
+              </div>
+            </Col>
+          </div>
+
+
+          <p className="ml-2">LinkedIn Corporation © 2020</p>
+
+
         </Row>
-       
-        
+
+
       </Container>
     )
   }

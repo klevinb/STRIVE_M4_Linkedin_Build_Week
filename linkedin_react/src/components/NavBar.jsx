@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Nav, Image, Navbar, NavDropdown, Form, FormControl, Container } from 'react-bootstrap';
 import './NavBar.css';
-import { FaSearch, FaHome, FaSuitcase, FaUserFriends, FaVideo } from 'react-icons/fa';
+import { FaHome, FaSuitcase, FaUserFriends, FaVideo } from 'react-icons/fa';
 import { BsChatSquareDots } from 'react-icons/bs'
 import { AiOutlineBell } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
@@ -36,8 +36,8 @@ class NavBar extends Component {
 
               <Navbar.Collapse id="basic-navbar-nav">
 
-                <Nav className="mr-auto" className='text-white'>
-                  <Link className='text-white mr-2' to="/" exact >
+                <Nav className='mr-auto text-white'>
+                  <Link className='text-white mr-2' to="/" >
                     <FaHome />
                     Home
                   </Link>
@@ -59,19 +59,15 @@ class NavBar extends Component {
                     Notifications
                   </Link>
 
-                  <NavDropdown title="Dropdown" id="basic-nav-dropdown" title='Me'>
-                    <NavDropdown.Item >My</NavDropdown.Item>
-                    <NavDropdown.Item >Another action</NavDropdown.Item>
-                    <NavDropdown.Item >Something</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item >Separated link</NavDropdown.Item>
+                  <Image src={this.props.src} style={{ width: "25px", height: "25px", borderRadius: "35%", margin: "0" }} />
+                  <NavDropdown title="Dropdown" className="basic-nav-dropdown" variant="light" title='Me'>
+                    <Link className='nav-link' to="/me" >
+                      My acc
+                  </Link>
                   </NavDropdown>
-                  <NavDropdown title="Dropdown" id="basic-nav-dropdown" title='Work'>
+
+                  <NavDropdown title="Dropdown" className="basic-nav-dropdown" title='Work'>
                     <NavDropdown.Item >Action</NavDropdown.Item>
-                    <NavDropdown.Item >Another action</NavDropdown.Item>
-                    <NavDropdown.Item >Something</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item >Separated link</NavDropdown.Item>
                   </NavDropdown>
 
                   <Link className='text-white mr-2' to="/my-network" >
@@ -85,7 +81,7 @@ class NavBar extends Component {
             </div>
           </div>
         </Navbar>
-      </Container>
+      </Container >
 
     )
   }

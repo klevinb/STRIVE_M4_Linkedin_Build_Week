@@ -1,6 +1,7 @@
 import React from 'react'
-import { Row, Col, Container } from 'react-bootstrap'
+import { Row, Col, Image } from 'react-bootstrap'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
+import './MainCss.css'
 
 class SideContent extends React.Component {
 
@@ -36,7 +37,7 @@ class SideContent extends React.Component {
 
     render() {
         return (
-            <Col md={3} className=" pl-4 pt-4">
+            <Col md={3} className="sideContent pl-4 pt-4">
                 <Row className="pb-5 d-flex flex-column ">
                     <Col className="col pt-3 border-bottom">
                         <div className="d-flex justify-content-between">
@@ -52,11 +53,11 @@ class SideContent extends React.Component {
                     </Col>
                 </Row>
                 <p>People also viewed</p>
-                {this.state.users.slice(0, 4).map((user, i) => {
+                {this.state.users.map((user, i) => {
                     return (
                         <Row className="pb-3" key={i}>
                             <Col md={4}>
-                                <img
+                                <Image
                                     src='https://img.icons8.com/officel/2x/user.png'
                                     style={{ height: "5rem", width: "5rem" }}
                                     className="card-img img-fluid"

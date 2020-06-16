@@ -8,20 +8,13 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 class App extends Component {
 
   state = {
-    profiles: null,
-
+    userImg: ''
   }
-  componentDidMount = async () => {
-    await fetch("https://striveschool.herokuapp.com/api/profile/", {
-      headers: new Headers({
-        'Authorization': 'Basic ' + btoa("user16:c9WEUxMS294hN6fF"),
-        "Content-Type": "application/json",
-      }),
-    })
-      .then(response => response.json())
-      .then(respObj => this.setState({
-        profiles: respObj
-      }))
+
+  getUserImg = (src) => {
+    this.setState({
+      userImg: src
+    });
   }
 
   render() {
@@ -29,15 +22,11 @@ class App extends Component {
       <Router>
         <div className="App" >
           <Container className="m-0 p-0" fluid>
-            <NavBar />
+            {this.state.userImg &&
 
-            {this.state.profiles && this.state.profiles.filter(profile => profile.name === "Klevin").map(profile =>
-              <Route path="/" exact>
-
-                <Content key={profile._id} profileInfo={profile} />
-              </Route>
-
-            )}
+              <NavBar src={this.state.userImg} />
+            }
+            <Route path="/:userID" component={(props) => <Content {...props} getUserImg={this.getUserImg} />} />
             <Footer />
           </Container>
         </div>

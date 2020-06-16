@@ -7,8 +7,7 @@ import { GiCancel } from 'react-icons/gi'
 
 function JumBotron(props) {
     return (
-        <Col md={9} className="contentCol d-flex justify-content-center mt-4">
-            {console.log(props.profileInfo)}
+        <Col md={9} className="contentCol d-flex justify-content-center mb-3 ">
             <div id="jumbotronMain" >
                 <div id='cameraIcon'>
                     <TiCameraOutline />
@@ -23,7 +22,7 @@ function JumBotron(props) {
                     <Row className="d-flex justify-content-between">
                         <Col md={6} className="pl-5" id="firstCol">
                             <h4>{props.profileInfo.name} {props.profileInfo.surname}</h4>
-                            <h5>{props.profileInfo.bio}</h5>
+                            <h5>{props.profileInfo.bio.length > 29 ? props.profileInfo.bio.slice(0, 29) + "..." : props.profileInfo.bio}</h5>
                             <div className="d-flex">
                                 <h6 className="mr-4">{props.profileInfo.area}</h6>
                                 <h6 className="mr-4"><p> 97 connections </p></h6>
