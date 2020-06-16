@@ -29,7 +29,6 @@ class SideContent extends React.Component {
           })
           .then((users) => {
               this.setState({users})
-            console.log(users)
           })
     }
 
@@ -69,15 +68,13 @@ class SideContent extends React.Component {
 
                                 </Col>
                                 <Col className="col col-8 d-flex pt-3 border-bottom">
-                                    <Row className="w-100">
-                                        <Col sm={10} className="d-flex flex-column w-75">
+                                    <div className="d-flex flex-column">
                                         <strong>{user.name} {user.surname}</strong>
                                         <span>{user.title}</span>
-                                        </Col>
-                                        <Col sm={2}>
+                                    </div>
+                                    <div>
                                         <span><i className="fa fa-user-plus"></i></span>
-                                        </Col>
-                                    </Row>                                        
+                                    </div>                                       
                                 </Col>
                             </Row>
                         )
