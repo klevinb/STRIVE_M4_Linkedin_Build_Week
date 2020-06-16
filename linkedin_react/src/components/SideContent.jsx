@@ -1,5 +1,5 @@
 import React from 'react'
-import {Row, Col, Container} from 'react-bootstrap'
+import {Row, Col, Image} from 'react-bootstrap'
 
 class SideContent extends React.Component {
 
@@ -51,13 +51,22 @@ class SideContent extends React.Component {
                         return (
                             <Row className="pb-3" key={i}>
                                 <Col md={4}>
-                                    <img
+                                    {user.image === undefined || user.image === ''
+                                    ?<Image
                                         src='https://img.icons8.com/officel/2x/user.png'
-                                        style={{height:"5rem", width: "5rem"}}
+                                        style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius:"2rem"}}
+                                        className="card-img img-fluid"
+                                        alt="image"
+                                    />
+                                    :<Image
+                                        src={user.image}
+                                        style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius:"2rem" }}
                                         className="card-img img-fluid"
                                         alt="image"
                                     />
                                     
+                                    }
+
                                 </Col>
                                 <Col className="col col-8 d-flex pt-3 border-bottom">
                                     <Row className="w-100">
