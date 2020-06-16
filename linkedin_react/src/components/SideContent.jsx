@@ -23,15 +23,15 @@ class SideContent extends React.Component {
         fetch(url, {
             method: "GET",
             headers: headers,
-          })
-          .then((response) => {
-            if (response.ok) {
-              return response.json();
-            }
-          })
-          .then((users) => {
-              this.setState({users})
-          })
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                }
+            })
+            .then((users) => {
+                this.setState({ users })
+            })
     }
 
     render() {
@@ -52,35 +52,35 @@ class SideContent extends React.Component {
                     </Col>
                 </Row>
                 <p>People also viewed</p>
-                {this.state.users.map((user, i) => {
+                {this.state.users.slice(4, 7).map((user, i) => {
                     return (
                         <Row className="pb-3" key={i}>
                             <Col md={4}>
-                                    {user.image === undefined || user.image === ''
-                                    ?<Image
+                                {user.image === undefined || user.image === ''
+                                    ? <Image
                                         src='https://img.icons8.com/officel/2x/user.png'
-                                        style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius:"2rem"}}
+                                        style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius: "2rem" }}
                                         className="card-img img-fluid"
                                         alt="image"
                                     />
-                                    :<Image
+                                    : <Image
                                         src={user.image}
-                                        style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius:"2rem" }}
+                                        style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius: "2rem" }}
                                         className="card-img img-fluid"
                                         alt="image"
                                     />
-                                    
-                                    }
+
+                                }
                             </Col>
-                                <Col className="col col-8 d-flex pt-3 border-bottom">
-                                    <div className="d-flex flex-column">
-                                        <strong>{user.name} {user.surname}</strong>
-                                        <span>{user.title}</span>
-                                    </div>
-                                    <div>
-                                        <span><i className="fa fa-user-plus"></i></span>
-                                    </div>                                       
-                                </Col>
+                            <Col className="col col-8 d-flex justify-content-between pt-3 border-bottom">
+                                <div className="d-flex flex-column ">
+                                    <strong>{user.name} {user.surname}</strong>
+                                    <span>{user.title}</span>
+                                </div>
+                                <div>
+                                    <span><i className="fa fa-user-plus"></i></span>
+                                </div>
+                            </Col>
                         </Row>
                     )
                 })}
