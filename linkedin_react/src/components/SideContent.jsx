@@ -23,16 +23,15 @@ class SideContent extends React.Component {
         fetch(url, {
             method: "GET",
             headers: headers,
-        })
-            .then((response) => {
-                if (response.ok) {
-                    return response.json();
-                }
-            })
-            .then((users) => {
-                this.setState({ users })
-                console.log(users)
-            })
+          })
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            }
+          })
+          .then((users) => {
+              this.setState({users})
+          })
     }
 
     render() {
@@ -57,25 +56,31 @@ class SideContent extends React.Component {
                     return (
                         <Row className="pb-3" key={i}>
                             <Col md={4}>
-                                <Image
-                                    src='https://img.icons8.com/officel/2x/user.png'
-                                    style={{ height: "5rem", width: "5rem" }}
-                                    className="card-img img-fluid"
-                                    alt="image"
-                                />
-
+                                    {user.image === undefined || user.image === ''
+                                    ?<Image
+                                        src='https://img.icons8.com/officel/2x/user.png'
+                                        style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius:"2rem"}}
+                                        className="card-img img-fluid"
+                                        alt="image"
+                                    />
+                                    :<Image
+                                        src={user.image}
+                                        style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius:"2rem" }}
+                                        className="card-img img-fluid"
+                                        alt="image"
+                                    />
+                                    
+                                    }
                             </Col>
-                            <Col className="col col-8 d-flex pt-3 border-bottom">
-                                <Row>
-                                    <Col sm={10} className="d-flex flex-column w-75">
+                                <Col className="col col-8 d-flex pt-3 border-bottom">
+                                    <div className="d-flex flex-column">
                                         <strong>{user.name} {user.surname}</strong>
                                         <span>{user.title}</span>
-                                    </Col>
-                                    <Col sm={2}>
+                                    </div>
+                                    <div>
                                         <span><i className="fa fa-user-plus"></i></span>
-                                    </Col>
-                                </Row>
-                            </Col>
+                                    </div>                                       
+                                </Col>
                         </Row>
                     )
                 })}
