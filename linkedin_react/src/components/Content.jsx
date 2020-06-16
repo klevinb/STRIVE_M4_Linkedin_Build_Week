@@ -9,8 +9,8 @@ import "./MainCss.css"
 class Content extends Component {
 
     state = {
-        userInfo: null,
-        userId: this.props.match.params.userID
+        userInfo: undefined,
+        userId: props.match.params.userID
     }
 
     fetchFunction = async () => {
@@ -23,22 +23,20 @@ class Content extends Component {
             .then(response => response.json())
             .then(respObj => this.setState({
                 userInfo: respObj
-            }))
-
-
+            }, () => this.props.getUserImg(this.state.userInfo.image)))
 
     }
 
-
     componentDidUpdate = (prevProps, prevState) => {
-        if (prevState.userId !== this.props.match.params.userID) {
+        if (prevState.userId !== props.match.params.userID) {
             this.setState({
                 userId: this.props.match.params.userID
+            }, () => {
+                this.fetchFunction()
+                this.props.getUserImg(this.state.userInfo.image)
             });
-            this.props.getUserImg(this.state.userInfo.image)
             // doing the fetch again
             // save userInfo in the state
-            this.fetchFunction()
         }
     }
 
@@ -49,19 +47,20 @@ class Content extends Component {
     render() {
         return (
             <Container className="content mt-4 mb-4">
-                {() => this.props.getUserImg(this.state.userInfo.image)}
                 <Row>
                     {this.state.userInfo &&
                         <>
-                            <Jumbotron getUserImg={this.props.getUserImg} profileInfo={this.state.userInfo} />
-                            <SideContent />
-                            <UserContent profileInfo={this.state.userInfo} />
-                            <Experiences userID={this.props.match.params.userID} />
+                            <>
+                                <Jumbotron profileInfo={this.state.userInfo} />
+                                <SideContent />
+                                <UserContent profileInfo={this.state.userInfo} />
+                                <Experiences userID={this.state.userInfo.username} />
+                            </>
                         </>
                     }
                 </Row>
 
-            </Container>
+            </Container >
         );
     }
 }

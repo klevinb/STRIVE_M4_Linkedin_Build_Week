@@ -12,9 +12,15 @@ class App extends Component {
   }
 
   getUserImg = (src) => {
-    this.setState({
-      userImg: src
-    });
+    if (src) {
+      this.setState({
+        userImg: src
+      });
+    } else {
+      this.setState({
+        userImg: ''
+      });
+    }
   }
 
   render() {
@@ -22,11 +28,12 @@ class App extends Component {
       <Router>
         <div className="App" >
           <Container className="m-0 p-0" fluid>
-            {this.state.userImg &&
-
+            {this.state.userImg ?
               <NavBar src={this.state.userImg} />
+              :
+              <NavBar />
             }
-            <Route path="/:userID" component={(props) => <Content {...props} getUserImg={this.getUserImg} />} />
+            <Route path="/:userID" render={(props) => <Content {...props} getUserImg={this.getUserImg} />} />
             <Footer />
           </Container>
         </div>

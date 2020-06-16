@@ -10,11 +10,12 @@ import "./MainCss.css"
 class Experiences extends Component {
 
     state = {
-        userData: ''
+        userData: '',
+        userID: props.userID
     }
 
     componentDidMount = async () => {
-        await fetch("https://striveschool.herokuapp.com/api/profile/" + this.props.userID + "/experiences", {
+        await fetch("https://striveschool.herokuapp.com/api/profile/" + props.userID + "/experiences", {
             headers: new Headers({
                 'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
                 "Content-Type": "application/json",
@@ -24,6 +25,24 @@ class Experiences extends Component {
             .then(respObj => this.setState({
                 userData: respObj
             }))
+    }
+
+    componentDidUpdate = async () => {
+        if (this.state.userID !== props.userID) {
+            console.log('EXPERIENCES from new user')
+            this.setState({ userID: props.userID }, async () => {
+                await fetch("https://striveschool.herokuapp.com/api/profile/" + props.userID + "/experiences", {
+                    headers: new Headers({
+                        'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
+                        "Content-Type": "application/json",
+                    }),
+                })
+                    .then(resp => resp.json())
+                    .then(respObj => this.setState({
+                        userData: respObj
+                    }))
+            })
+        }
     }
 
 
