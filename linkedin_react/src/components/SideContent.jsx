@@ -56,7 +56,7 @@ class SideContent extends React.Component {
                 {this.state.users.slice(6, 12).map((user, i) => {
                     return (
                         <Link to={'/'+user.username}>
-                            <Row className="pb-3" key={i}>
+                            <Row className="pb-3 d-flex align-items-center" key={i}>
                                 <Col md={4}>
                                     {user.image === undefined || user.image === ''
                                         ? <Image
