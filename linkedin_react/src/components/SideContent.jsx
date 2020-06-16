@@ -2,6 +2,7 @@ import React from 'react'
 import { Row, Col, Image } from 'react-bootstrap'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
 import './MainCss.css'
+import { Link } from 'react-router-dom'
 
 class SideContent extends React.Component {
 
@@ -54,34 +55,36 @@ class SideContent extends React.Component {
                 <p>People also viewed</p>
                 {this.state.users.slice(6, 12).map((user, i) => {
                     return (
-                        <Row className="pb-3" key={i}>
-                            <Col md={4}>
-                                {user.image === undefined || user.image === ''
-                                    ? <Image
-                                        src='https://img.icons8.com/officel/2x/user.png'
-                                        style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius: "2rem" }}
-                                        className="card-img img-fluid"
-                                        alt="image"
-                                    />
-                                    : <Image
-                                        src={user.image}
-                                        style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius: "2rem" }}
-                                        className="card-img img-fluid"
-                                        alt="image"
-                                    />
+                        <Link to={'/'+user.username}>
+                            <Row className="pb-3" key={i}>
+                                <Col md={4}>
+                                    {user.image === undefined || user.image === ''
+                                        ? <Image
+                                            src='https://img.icons8.com/officel/2x/user.png'
+                                            style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius: "2rem" }}
+                                            className="card-img img-fluid"
+                                            alt="image"
+                                        />
+                                        : <Image
+                                            src={user.image}
+                                            style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius: "2rem" }}
+                                            className="card-img img-fluid"
+                                            alt="image"
+                                        />
 
-                                }
-                            </Col>
-                            <Col className="col col-8 d-flex justify-content-between pt-3 border-bottom">
-                                <div className="d-flex flex-column ">
-                                    <strong>{user.name} {user.surname}</strong>
-                                    <span>{user.title}</span>
-                                </div>
-                                <div>
-                                    <span><i className="fa fa-user-plus"></i></span>
-                                </div>
-                            </Col>
-                        </Row>
+                                    }
+                                </Col>
+                                <Col className="col col-8 d-flex justify-content-between pt-3 border-bottom">
+                                    <div className="d-flex flex-column ">
+                                        <strong>{user.name} {user.surname}</strong>
+                                        <span>{user.title}</span>
+                                    </div>
+                                    <div>
+                                        <span><i className="fa fa-user-plus"></i></span>
+                                    </div>
+                                </Col>
+                            </Row>
+                        </Link>
                     )
                 })}
             </>
