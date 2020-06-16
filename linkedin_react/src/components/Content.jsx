@@ -10,7 +10,7 @@ class Content extends Component {
 
     state = {
         userInfo: undefined,
-        userId: props.match.params.userID
+        userId: this.props.match.params.userID
     }
 
     fetchFunction = async () => {
@@ -28,7 +28,7 @@ class Content extends Component {
     }
 
     componentDidUpdate = (prevProps, prevState) => {
-        if (prevState.userId !== props.match.params.userID) {
+        if (prevState.userId !== this.props.match.params.userID) {
             this.setState({
                 userId: this.props.match.params.userID
             }, () => {

@@ -11,11 +11,11 @@ class Experiences extends Component {
 
     state = {
         userData: '',
-        userID: props.userID
+        userID: this.props.userID
     }
 
     componentDidMount = async () => {
-        await fetch("https://striveschool.herokuapp.com/api/profile/" + props.userID + "/experiences", {
+        await fetch("https://striveschool.herokuapp.com/api/profile/" + this.props.userID + "/experiences", {
             headers: new Headers({
                 'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
                 "Content-Type": "application/json",
@@ -28,10 +28,10 @@ class Experiences extends Component {
     }
 
     componentDidUpdate = async () => {
-        if (this.state.userID !== props.userID) {
+        if (this.state.userID !== this.props.userID) {
             console.log('EXPERIENCES from new user')
-            this.setState({ userID: props.userID }, async () => {
-                await fetch("https://striveschool.herokuapp.com/api/profile/" + props.userID + "/experiences", {
+            this.setState({ userID: this.props.userID }, async () => {
+                await fetch("https://striveschool.herokuapp.com/api/profile/" + this.props.userID + "/experiences", {
                     headers: new Headers({
                         'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
                         "Content-Type": "application/json",
