@@ -42,6 +42,7 @@ class SideContent extends React.Component {
                         </Col>
                         <Col className="col pt-3 border-bottom d-flex">
                             <p>Add profile in another language</p>
+<<<<<<< Updated upstream
                             <i className="fa fa-question-circle-o ml-auto"></i>
                         </Col>
                     </Row>
@@ -52,6 +53,19 @@ class SideContent extends React.Component {
                                 <Col md={4}>
                                     {user.image === undefined || user.image === ''
                                     ?<Image
+=======
+                            <AiOutlineQuestionCircle />
+                        </div>
+                    </Col>
+                </Row>
+                <p>People also viewed</p>
+                {this.state.users.slice(6, 9).map((user, i) => {
+                    return (
+                        <Row className="pb-3" key={i}>
+                            <Col md={4}>
+                                {user.image === undefined || user.image === ''
+                                    ? <Image
+>>>>>>> Stashed changes
                                         src='https://img.icons8.com/officel/2x/user.png'
                                         style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius:"2rem"}}
                                         className="card-img img-fluid"
