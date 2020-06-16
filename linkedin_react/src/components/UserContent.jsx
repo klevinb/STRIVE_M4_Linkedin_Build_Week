@@ -6,7 +6,7 @@ import { RiPencilLine } from 'react-icons/ri'
 function UserContent(props) {
     return (
         <>
-            <Col md={9} className="contentCol p-4 mb-3">
+            <div className="contentCol p-4 mt-5 mb-4">
                 <div className="d-flex justify-content-between">
                     <h4>About</h4>
                     <div>
@@ -16,9 +16,7 @@ function UserContent(props) {
                 <p>
                     I am learning React.js and I am creating projects using this framework and every day I am getting better and better on it.
                 </p>
-            </Col>
-            <Col md={4}>
-            </Col>
+            </div>
         </>
     );
 }

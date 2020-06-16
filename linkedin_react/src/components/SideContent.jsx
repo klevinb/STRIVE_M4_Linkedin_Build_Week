@@ -36,7 +36,7 @@ class SideContent extends React.Component {
 
     render() {
         return (
-            <Col md={3} className="sideContent pl-4 pt-4">
+            <>
                 <Row className="pb-5 d-flex flex-column ">
                     <Col className="col pt-3 border-bottom">
                         <div className="d-flex justify-content-between">
@@ -52,7 +52,7 @@ class SideContent extends React.Component {
                     </Col>
                 </Row>
                 <p>People also viewed</p>
-                {this.state.users.slice(4, 7).map((user, i) => {
+                {this.state.users.slice(6, 12).map((user, i) => {
                     return (
                         <Row className="pb-3" key={i}>
                             <Col md={4}>
@@ -84,7 +84,7 @@ class SideContent extends React.Component {
                         </Row>
                     )
                 })}
-            </Col>
+            </>
         )
     }
 

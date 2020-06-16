@@ -5,6 +5,7 @@ import SideContent from './SideContent'
 import UserContent from './UserContent'
 import Experiences from './Experiences'
 import { Spinner } from 'react-bootstrap'
+import { Col } from 'react-bootstrap'
 import "./MainCss.css"
 
 class Content extends Component {
@@ -59,10 +60,15 @@ class Content extends Component {
                     {this.state.userInfo &&
 
                         <>
-                            <Jumbotron profileInfo={this.state.userInfo} />
-                            <SideContent />
-                            <UserContent profileInfo={this.state.userInfo} />
-                            <Experiences userID={this.state.userInfo.username} />
+                            <Col md={9} className="mainContent d-flex flex-column mb-3 " >
+                                <Jumbotron profileInfo={this.state.userInfo} />
+                                <UserContent profileInfo={this.state.userInfo} />
+                                <Experiences userID={this.state.userInfo.username} />
+                            </Col>
+                            <Col md={3} className="sideContent pl-4 pt-4">
+                                <SideContent />
+                            </Col>
+
                         </>
                     }
                 </Row>

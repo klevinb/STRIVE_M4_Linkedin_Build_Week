@@ -51,7 +51,7 @@ class Experiences extends Component {
             <>
                 {this.state.userData && this.state.userData.map(user =>
                     <>
-                        <Col md={9} className="contentCol p-4 mb-3">
+                        <div className="contentCol p-4 mb-3">
                             {console.log(this.state.userData)}
                             <div className="d-flex justify-content-between">
                                 <h4>Experiences</h4>
@@ -77,9 +77,7 @@ class Experiences extends Component {
                                     </div>
                                 </div>
                             </div>
-                        </Col>
-                        <Col md={4}>
-                        </Col>
+                        </div>
                     </>
                 )}
 

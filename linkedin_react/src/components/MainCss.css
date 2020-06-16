@@ -76,8 +76,8 @@
     height: 200px;
     overflow: hidden;
     position: absolute;
-    top: 25%;
-    left: 3%;
+    top: 14%;
+    left: 6%;
 }
 #profilePhoto img{
     object-fit: fill;
@@ -115,7 +115,7 @@
 }
 
 .sideContent {
-    max-height: 550px;
+    /* max-height: 550px; */
     overflow: hidden;
 }
 
