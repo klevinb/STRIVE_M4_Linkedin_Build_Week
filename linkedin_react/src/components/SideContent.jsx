@@ -1,13 +1,15 @@
 import React from 'react'
-import {Row, Col, Image} from 'react-bootstrap'
+import { Row, Col, Image } from 'react-bootstrap'
+import { AiOutlineQuestionCircle } from 'react-icons/ai'
+import './MainCss.css'
 
 class SideContent extends React.Component {
 
-    state={
-        users:[]
+    state = {
+        users: []
     }
 
-    componentDidMount = () =>{
+    componentDidMount = () => {
         const url = "https://striveschool.herokuapp.com/api/profile/";
 
         const username = 'user24';
@@ -21,82 +23,71 @@ class SideContent extends React.Component {
         fetch(url, {
             method: "GET",
             headers: headers,
-          })
-          .then((response) => {
-            if (response.ok) {
-              return response.json();
-            }
-          })
-          .then((users) => {
-              this.setState({users})
-          })
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                }
+            })
+            .then((users) => {
+                this.setState({ users })
+            })
     }
 
-    render(){
+    render() {
         return (
-                <Col md={4} className="offset-md-8 pt-5">
-                    <Row className="pb-5 d-flex flex-column ">
-                        <Col className="col pt-3 border-bottom d-flex">
+            <>
+                <Row className="pb-5 d-flex flex-column ">
+                    <Col className="col pt-3 border-bottom">
+                        <div className="d-flex justify-content-between">
                             <p>Edit public profile and URL</p>
-                            <i className="fa fa-question-circle-o ml-auto"></i>
-                        </Col>
-                        <Col className="col pt-3 border-bottom d-flex">
+                            <AiOutlineQuestionCircle />
+                        </div>
+                    </Col>
+                    <Col className="col pt-3 border-bottom">
+                        <div className="d-flex justify-content-between">
                             <p>Add profile in another language</p>
-<<<<<<< Updated upstream
-                            <i className="fa fa-question-circle-o ml-auto"></i>
-                        </Col>
-                    </Row>
-                    <p>People also viewed</p>
-                    {this.state.users.map((user,i)=>{
-                        return (
-                            <Row className="pb-3" key={i}>
-                                <Col md={4}>
-                                    {user.image === undefined || user.image === ''
-                                    ?<Image
-=======
                             <AiOutlineQuestionCircle />
                         </div>
                     </Col>
                 </Row>
                 <p>People also viewed</p>
-                {this.state.users.slice(6, 9).map((user, i) => {
+                {this.state.users.slice(6, 12).map((user, i) => {
                     return (
                         <Row className="pb-3" key={i}>
                             <Col md={4}>
                                 {user.image === undefined || user.image === ''
                                     ? <Image
->>>>>>> Stashed changes
                                         src='https://img.icons8.com/officel/2x/user.png'
-                                        style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius:"2rem"}}
+                                        style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius: "2rem" }}
                                         className="card-img img-fluid"
                                         alt="image"
                                     />
-                                    :<Image
+                                    : <Image
                                         src={user.image}
-                                        style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius:"2rem" }}
+                                        style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius: "2rem" }}
                                         className="card-img img-fluid"
                                         alt="image"
                                     />
-                                    
-                                    }
 
-                                </Col>
-                                <Col className="col col-8 d-flex pt-3 border-bottom">
-                                    <div className="d-flex flex-column">
-                                        <strong>{user.name} {user.surname}</strong>
-                                        <span>{user.title}</span>
-                                    </div>
-                                    <div>
-                                        <span><i className="fa fa-user-plus"></i></span>
-                                    </div>                                       
-                                </Col>
-                            </Row>
-                        )
-                    })}
-                </Col>
+                                }
+                            </Col>
+                            <Col className="col col-8 d-flex justify-content-between pt-3 border-bottom">
+                                <div className="d-flex flex-column ">
+                                    <strong>{user.name} {user.surname}</strong>
+                                    <span>{user.title}</span>
+                                </div>
+                                <div>
+                                    <span><i className="fa fa-user-plus"></i></span>
+                                </div>
+                            </Col>
+                        </Row>
+                    )
+                })}
+            </>
         )
     }
-    
+
 }
 
 export default SideContent
