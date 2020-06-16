@@ -17,8 +17,13 @@ class NavBar extends Component {
             </Navbar.Brand>
              
               <Form inline>
+<<<<<<< Updated upstream
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />
           
+=======
+                <FormControl type="text" placeholder="<i class='icon-search'></i>" placeholder="Search" className="mr-sm-2" />
+
+>>>>>>> Stashed changes
               </Form>
 
 
