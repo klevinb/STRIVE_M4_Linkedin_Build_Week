@@ -4,13 +4,15 @@ import Jumbotron from './Jumbotron'
 import SideContent from './SideContent'
 import UserContent from './UserContent'
 import Experiences from './Experiences'
+import { Spinner } from 'react-bootstrap'
 import "./MainCss.css"
 
 class Content extends Component {
 
     state = {
         userInfo: undefined,
-        userId: this.props.match.params.userID
+        userId: this.props.match.params.userID,
+        loading: true
     }
 
     fetchFunction = async () => {
@@ -22,7 +24,8 @@ class Content extends Component {
         })
             .then(response => response.json())
             .then(respObj => this.setState({
-                userInfo: respObj
+                userInfo: respObj,
+                loading: false
             }, () => this.props.getUserImg(this.state.userInfo.image)))
 
     }
@@ -47,15 +50,19 @@ class Content extends Component {
     render() {
         return (
             <Container className="content mt-4 mb-4">
+                {this.state.loading &&
+                    <div className="d-flex justify-content-center align-items-center" style={{ width: '100%', height: "100vh" }}>
+                        <Spinner style={{ fontSize: "200px" }} animation="grow" variant="secondary" />
+                    </div>
+                }
                 <Row>
                     {this.state.userInfo &&
+
                         <>
-                            <>
-                                <Jumbotron profileInfo={this.state.userInfo} />
-                                <SideContent />
-                                <UserContent profileInfo={this.state.userInfo} />
-                                <Experiences userID={this.state.userInfo.username} />
-                            </>
+                            <Jumbotron profileInfo={this.state.userInfo} />
+                            <SideContent />
+                            <UserContent profileInfo={this.state.userInfo} />
+                            <Experiences userID={this.state.userInfo.username} />
                         </>
                     }
                 </Row>
