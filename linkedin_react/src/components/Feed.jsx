@@ -28,7 +28,7 @@ class Feed extends Component {
         })
             .then(resp => resp.json())
             .then(respObj => this.setState({
-                feeds: respObj,
+                feeds: respObj.reverse(),
                 loading: false
             }))
     }
@@ -88,7 +88,7 @@ class Feed extends Component {
                             </Col>
                             <Col md={6} className="d-flex flex-column mb-3 " >
                                 <FeedContent addNewPost={this.showModal} />
-                                {this.state.feeds.map(post =>
+                                {this.state.feeds && this.state.feeds.map(post =>
                                     <FeedPosts loading={this.state.loading} info={post} />
                                 )}
                             </Col>

@@ -218,8 +218,7 @@
 }
 
 #postImage {
-    width: 50px;
-    height: 50px;
+    width: 70px;
     overflow: hidden;
     border-radius: 70px;
 }
@@ -232,4 +231,10 @@
     font-size: 28px;
     margin-left: 20px;
     color: rgb(100, 100, 100) ;
+}
+
+.commentIcons svg {
+    font-size: 28px;
+    margin-left: 20px;
+    color: black !important;
 }
