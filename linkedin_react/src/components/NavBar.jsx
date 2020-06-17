@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 
 
 class NavBar extends Component {
+
   render() {
     return (
 
@@ -21,15 +22,13 @@ class NavBar extends Component {
               <Navbar.Brand href="#home">
 
               </Navbar.Brand>
-              <Dropdown show={this.props.status}>
+              <Dropdown show={this.props.status} onSelect={this.props.changeStatus} >
                 <Dropdown.Menu>
                   {this.props.users}
                 </Dropdown.Menu>
               </Dropdown>
               <FormControl onChange={(event) => this.props.search(event.currentTarget.value)} type="text" placeholder="Search" className="mr-sm-2" />
             </div>
-
-
             <div>
 
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -37,7 +36,7 @@ class NavBar extends Component {
               <Navbar.Collapse id="basic-navbar-nav">
 
                 <Nav className='mr-auto text-white'>
-                  <Link className='text-white mr-2' to="/" >
+                  <Link className='text-white mr-2' to="/feed" >
                     <FaHome />
                     Home
                   </Link>

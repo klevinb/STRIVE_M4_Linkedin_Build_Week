@@ -3,7 +3,7 @@ import Content from './components/Content'
 import { Container, Dropdown } from 'react-bootstrap'
 import NavBar from './components/NavBar';
 import Footer from "./components/Footer"
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 class App extends Component {
 
@@ -45,6 +45,13 @@ class App extends Component {
     }
   }
 
+  changeStatus = () => {
+    this.setState({
+      show: !this.state.show,
+      search: ''
+    });
+  }
+
   getUserImg = (src) => {
     if (src) {
       this.setState({
@@ -64,7 +71,9 @@ class App extends Component {
           <Container className="m-0 p-0" fluid>
             <NavBar
               search={this.searchedValue}
+              searchedValue={this.state.searchedValue}
               status={this.state.show}
+              changeStatus={this.changeStatus}
               users=
               {this.state.users && this.state.search &&
 
@@ -75,8 +84,8 @@ class App extends Component {
 
                 this.state.users
                   .filter(user => user.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
-                  .map(user =>
-                    <Dropdown.Item>{user.name}</Dropdown.Item>
+                  .map((user, i) =>
+                    <Dropdown.Item key={i}><Link to={"/" + user.username}>{user.name}</Link></Dropdown.Item>
                   )
 
                 :
