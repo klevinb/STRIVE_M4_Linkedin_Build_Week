@@ -3,6 +3,7 @@ import Content from './components/Content'
 import { Container, Dropdown } from 'react-bootstrap'
 import NavBar from './components/NavBar';
 import Footer from "./components/Footer"
+import Feed from './components/Feed'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 class App extends Component {
@@ -69,32 +70,37 @@ class App extends Component {
       <Router>
         <div className="App" >
           <Container className="m-0 p-0" fluid>
-            <NavBar
-              search={this.searchedValue}
-              searchedValue={this.state.searchedValue}
-              status={this.state.show}
-              changeStatus={this.changeStatus}
-              users=
-              {this.state.users && this.state.search &&
+            <Route render={(props) =>
 
-                this.state.users
-                  .filter(user => user.name
-                    .toLowerCase()
-                    .startsWith(this.state.search.toLowerCase())).length > 0 ?
+              <NavBar
+                {...props}
+                search={this.searchedValue}
+                searchedValue={this.state.searchedValue}
+                status={this.state.show}
+                changeStatus={this.changeStatus}
+                users=
+                {this.state.users && this.state.search &&
 
-                this.state.users
-                  .filter(user => user.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
-                  .map((user, i) =>
-                    <Dropdown.Item key={i}><Link to={"/" + user.username}>{user.name}</Link></Dropdown.Item>
-                  )
+                  this.state.users
+                    .filter(user => user.name
+                      .toLowerCase()
+                      .startsWith(this.state.search.toLowerCase())).length > 0 ?
 
-                :
-                <Dropdown.Item>No user with that name</Dropdown.Item>
+                  this.state.users
+                    .filter(user => user.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
+                    .map((user, i) =>
+                      <Dropdown.Item key={i}><Link to={"/profiles/" + user.username}>{user.name}</Link></Dropdown.Item>
+                    )
+
+                  :
+                  <Dropdown.Item>No user with that name</Dropdown.Item>
 
 
-              } src={this.state.userImg}
-            />
-            <Route path="/:userID" render={(props) => <Content {...props} getUserImg={this.getUserImg} />} />
+                } src={this.state.userImg}
+              />
+            } />
+            <Route path="/feed" exact component={Feed} />
+            <Route path="/profiles/:userID" render={(props) => <Content {...props} getUserImg={this.getUserImg} />} />
             <Footer />
           </Container>
         </div>

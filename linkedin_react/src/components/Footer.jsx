@@ -7,7 +7,7 @@ export class Footer extends Component {
   render() {
     return (
       <Container className="containers">
-        <Image src="assets/linkedin-logo.png" className="mt-4" />
+        <Image src="/assets/linkedin-logo.png" className="mt-4" />
         <Row className="mt-4 flex-column">
 
           <div className="d-flex">

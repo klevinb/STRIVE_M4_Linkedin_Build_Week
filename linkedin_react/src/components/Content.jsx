@@ -58,7 +58,6 @@ class Content extends Component {
                 }
                 <Row>
                     {this.state.userInfo &&
-
                         <>
                             <Col md={9} className="d-flex flex-column mb-3 " >
                                 <Jumbotron profileInfo={this.state.userInfo} />
@@ -66,7 +65,7 @@ class Content extends Component {
                                 <Experiences userID={this.state.userInfo.username} />
                             </Col>
                             <Col md={3} className="sideContent pl-4 pt-4">
-                                <SideContent />
+                                <SideContent props={this.props} />
                             </Col>
 
                         </>

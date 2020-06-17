@@ -64,9 +64,7 @@ class NavBar extends Component {
                     <Image src='https://img.icons8.com/officel/2x/user.png' style={{ width: "25px", height: "25px", borderRadius: "35%", margin: "0" }} />
                   }
                   <NavDropdown title="Dropdown" className="basic-nav-dropdown" variant="light" title='Me'>
-                    <Link className='nav-link' to="/me" >
-                      My acc
-                  </Link>
+                    <NavDropdown.Item onSelect={() => this.props.history.push("/profiles/me")}>My Acc</NavDropdown.Item>
                   </NavDropdown>
 
                   <NavDropdown title="Dropdown" className="basic-nav-dropdown" title='Work'>

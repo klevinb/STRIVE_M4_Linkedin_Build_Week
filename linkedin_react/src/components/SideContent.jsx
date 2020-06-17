@@ -55,36 +55,36 @@ class SideContent extends React.Component {
                 <p>People also viewed</p>
                 {this.state.users.slice(6, 12).map((user, i) => {
                     return (
-                        <Link key={i} to={"/" + user.username}>
-                            <Row className="pb-3 d-flex align-items-center">
-                                <Col md={4}>
-                                    {user.image === undefined || user.image === ''
-                                        ? <Image
-                                            src='https://img.icons8.com/officel/2x/user.png'
-                                            style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius: "2rem" }}
-                                            className="card-img img-fluid"
-                                            alt="image"
-                                        />
-                                        : <Image
-                                            src={user.image}
-                                            style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius: "2rem" }}
-                                            className="card-img img-fluid"
-                                            alt="image"
-                                        />
+                        <Row className="pb-3 d-flex align-items-center">
+                            <Col md={4}>
+                                {user.image === undefined || user.image === ''
+                                    ? <Image
+                                        onClick={() => this.props.props.history.push("/profiles/" + user.username)}
+                                        src='https://img.icons8.com/officel/2x/user.png'
+                                        style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius: "2rem" }}
+                                        className="card-img img-fluid"
+                                        alt="image"
+                                    />
+                                    : <Image
+                                        onClick={() => this.props.props.history.push("/profiles/" + user.username)}
+                                        src={user.image}
+                                        style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius: "2rem" }}
+                                        className="card-img img-fluid"
+                                        alt="image"
+                                    />
 
-                                    }
-                                </Col>
-                                <Col className="col col-8 d-flex justify-content-between pt-3 border-bottom">
-                                    <div className="d-flex flex-column ">
-                                        <strong>{user.name} {user.surname}</strong>
-                                        <span>{user.title}</span>
-                                    </div>
-                                    <div>
-                                        <span><i className="fa fa-user-plus"></i></span>
-                                    </div>
-                                </Col>
-                            </Row>
-                        </Link>
+                                }
+                            </Col>
+                            <Col className="col col-8 d-flex justify-content-between pt-3 border-bottom">
+                                <div className="d-flex flex-column" onClick={() => this.props.props.history.push("/profiles/" + user.username)}>
+                                    <strong>{user.name} {user.surname}</strong>
+                                    <span>{user.title}</span>
+                                </div>
+                                <div>
+                                    <span><i className="fa fa-user-plus"></i></span>
+                                </div>
+                            </Col>
+                        </Row>
                     )
                 })}
             </>
