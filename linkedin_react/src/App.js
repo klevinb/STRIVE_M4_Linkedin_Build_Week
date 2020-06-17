@@ -32,7 +32,7 @@ class App extends Component {
     this.fetchUser()
   }
 
-  searchedValue = (search) => {
+  setSearch = (search) => {
     if (search) {
       this.setState({
         search,
@@ -47,6 +47,7 @@ class App extends Component {
   }
 
   changeStatus = () => {
+    console.log("test")
     this.setState({
       show: !this.state.show,
       search: ''
@@ -70,35 +71,31 @@ class App extends Component {
       <Router>
         <div className="App" >
           <Container className="m-0 p-0" fluid>
-            <Route render={(props) =>
+            <NavBar
+              setSearch={this.setSearch}
+              searchValue={this.state.search}
+              status={this.state.show}
+              changeStatus={this.changeStatus}
+              users=
+              {this.state.users && this.state.search &&
 
-              <NavBar
-                {...props}
-                search={this.searchedValue}
-                searchedValue={this.state.searchedValue}
-                status={this.state.show}
-                changeStatus={this.changeStatus}
-                users=
-                {this.state.users && this.state.search &&
+                this.state.users
+                  .filter(user => user.name
+                    .toLowerCase()
+                    .startsWith(this.state.search.toLowerCase())).length > 0 ?
 
-                  this.state.users
-                    .filter(user => user.name
-                      .toLowerCase()
-                      .startsWith(this.state.search.toLowerCase())).length > 0 ?
+                this.state.users
+                  .filter(user => user.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
+                  .map((user, i) =>
+                    <Dropdown.Item key={i}><Link to={"/profiles/" + user.username}>{user.name}</Link></Dropdown.Item>
+                  )
 
-                  this.state.users
-                    .filter(user => user.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
-                    .map((user, i) =>
-                      <Dropdown.Item key={i}><Link to={"/profiles/" + user.username}>{user.name}</Link></Dropdown.Item>
-                    )
-
-                  :
-                  <Dropdown.Item>No user with that name</Dropdown.Item>
+                :
+                <Dropdown.Item>No user with that name</Dropdown.Item>
 
 
-                } src={this.state.userImg}
-              />
-            } />
+              } src={this.state.userImg}
+            />
             <Route path="/feed" exact component={Feed} />
             <Route path="/profiles/:userID" render={(props) => <Content {...props} getUserImg={this.getUserImg} />} />
             <Footer />

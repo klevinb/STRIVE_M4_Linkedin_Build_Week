@@ -4,7 +4,8 @@ import './NavBar.css';
 import { FaHome, FaSuitcase, FaUserFriends, FaVideo } from 'react-icons/fa';
 import { BsChatSquareDots } from 'react-icons/bs'
 import { AiOutlineBell } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+
 
 
 
@@ -27,7 +28,7 @@ class NavBar extends Component {
                   {this.props.users}
                 </Dropdown.Menu>
               </Dropdown>
-              <FormControl onChange={(event) => this.props.search(event.currentTarget.value)} type="text" placeholder="Search" className="mr-sm-2" />
+              <FormControl onChange={(event) => this.props.setSearch(event.currentTarget.value)} value={this.props.searchValue} type="text" placeholder="Search" className="mr-sm-2" />
             </div>
             <div>
 
@@ -88,4 +89,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);
