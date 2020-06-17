@@ -4,7 +4,7 @@ import {FaAngleDown} from 'react-icons/fa'
 
 function RightSideFeed() {
     return (
-        <Col md={3}>
+        <Col md={3} style={{ fontSize: '18px'}}>
             <Card className="text-center" style={{ width: '100%', height: '25rem' }}>
                 <Card.Header className="d-flex justify-content-end">Ad...</Card.Header>
                 <Card.Body className="d-flex flex-column justify-content-between align-items-center">
@@ -36,7 +36,7 @@ function RightSideFeed() {
                     <p>More</p>
                 </div>
                 <div className="d-flex justify-content-center">
-                    <Image src="/assets/linkedin-logo.png" style={{ width: '5rem', height: '1.5rem' }} />
+                    <Image src="/assets/linkedin-logo.png" style={{ width: '6rem', height: '1.5rem' }} />
                     <span>LinkedIn Corporation &#169;2020</span>
                 </div>
             </div>
