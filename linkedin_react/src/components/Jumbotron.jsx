@@ -16,7 +16,10 @@ function JumBotron(props) {
                 <Image fluid className="w-100" src="/assets/jumbotronCover.jpeg" />
             </div>
             <div id="profilePhoto">
-                <Image src={props.profileInfo.image} />
+                {props.profileInfo.image 
+                ? <Image src={props.profileInfo.image} />
+                : <Image src='https://img.icons8.com/officel/2x/user.png'/>
+                }
             </div>
             <div>
                 <Row className="d-flex justify-content-between">
