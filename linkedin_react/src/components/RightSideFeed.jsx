@@ -1,5 +1,6 @@
 import React from 'react'
 import {Col, Card, Button, Image} from 'react-bootstrap'
+import {FaAngleDown} from 'react-icons/fa'
 
 function RightSideFeed() {
     return (
@@ -23,12 +24,12 @@ function RightSideFeed() {
                     <p>Help Center</p>
                 </div>
                 <div className="d-flex justify-content-around">
-                    <p>Privacy & Terms</p>
+                    <p>Privacy & Terms <FaAngleDown/></p>
                     <p>Ad Choices</p>
                     <p>Advertising</p>
                 </div>
                 <div className="d-flex justify-content-around">
-                    <p>Business Services</p>
+                    <p>Business Services <FaAngleDown/></p>
                     <p>Get the LinkedIn app</p>
                 </div>
                 <div className="d-flex justify-content-center">
