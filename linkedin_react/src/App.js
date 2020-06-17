@@ -94,7 +94,7 @@ class App extends Component {
 
               } src={this.state.userImg}
             />
-            <Route path="/profiles/:userID" render={(props) => <Content {...props} getUserImg={this.getUserImg} />} />
+            <Route path="/:userID" render={(props) => <Content {...props} getUserImg={this.getUserImg} />} />
             <Footer />
           </Container>
         </div>
