@@ -52,7 +52,9 @@ class Experiences extends Component {
                     <div className="d-flex justify-content-between">
                         <h4>Experiences</h4>
                         <div>
-                            <AiOutlinePlus />
+                            {this.props.userID === "user16" &&
+                                <AiOutlinePlus />
+                            }
                         </div>
                     </div>
                     {this.state.userData && this.state.userData.map((user, i) =>
@@ -61,6 +63,7 @@ class Experiences extends Component {
                             <div id="experienceContent" className="d-flex justify-content-between">
                                 <div className="d-flex align-items-center ">
                                     <div id="iconDiv">
+
                                         <FaRegBuilding />
                                     </div>
                                     <div className="ml-4">
@@ -71,7 +74,10 @@ class Experiences extends Component {
                                     </div>
                                 </div>
                                 <div>
-                                    <RiPencilLine />
+                                    {this.props.userID === "user16" &&
+                                        <RiPencilLine />
+
+                                    }
                                 </div>
                             </div>
                         </div>

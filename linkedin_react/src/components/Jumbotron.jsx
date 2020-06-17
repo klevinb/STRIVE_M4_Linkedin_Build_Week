@@ -10,15 +10,17 @@ function JumBotron(props) {
     return (
         <div id="jumbotronMain" className="contentCol" >
             <div id='cameraIcon'>
-                <TiCameraOutline />
+                {props.profileInfo.username === "user16" &&
+                    <TiCameraOutline />
+                }
             </div>
             <div id="jumbotron">
                 <Image fluid className="w-100" src="/assets/jumbotronCover.jpeg" />
             </div>
             <div id="profilePhoto">
-                {props.profileInfo.image 
-                ? <Image src={props.profileInfo.image} />
-                : <Image src='https://img.icons8.com/officel/2x/user.png'/>
+                {props.profileInfo.image
+                    ? <Image src={props.profileInfo.image} />
+                    : <Image src='https://img.icons8.com/officel/2x/user.png' />
                 }
             </div>
             <div>
@@ -34,9 +36,18 @@ function JumBotron(props) {
                     </Col>
                     <Col md={6} className="mt-4 d-flex flex-column">
                         <div className="align-self-end mr-4">
-                            <Button>Add profile section</Button>
-                            <Button id="secondButton">More ...</Button>
-                            <RiPencilLine />
+                            {props.profileInfo.username === "user16" ?
+                                <>
+                                    <Button>Add profile section</Button>
+                                    <Button id="secondButton">More ...</Button>
+                                    <RiPencilLine />
+                                </>
+                                :
+                                <>
+                                    <Button>Message</Button>
+                                    <Button id="secondButton">More ...</Button>
+                                </>
+                            }
                         </div>
                         <div id="status" >
                             <div className="d-flex mt-4">
@@ -47,15 +58,18 @@ function JumBotron(props) {
                             </div>
                         </div>
                     </Col>
+
                     <div id="moreInfo" className="ml-5 mr-5 mb-3">
                         <div id="xbutton">
-                            <GiCancel />
+                            {props.profileInfo.username === "user16" &&
+                                <GiCancel />
+                            }
                         </div>
                         <p>
                             <span>Show recruiters you’re open</span> to job opportunities—you control who sees this.
                                 <br></br>
                                 Get started
-                                </p>
+                            </p>
                     </div>
                 </Row>
             </div>
