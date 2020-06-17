@@ -4,6 +4,7 @@ import { Container, Dropdown } from 'react-bootstrap'
 import NavBar from './components/NavBar';
 import Footer from "./components/Footer"
 import Feed from './components/Feed'
+import RightSideFeed from './components/RightSideFeed'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 class App extends Component {
@@ -100,6 +101,7 @@ class App extends Component {
               />
             } />
             <Route path="/feed" exact component={Feed} />
+            <Route path="/rightsidefeed" exact component={RightSideFeed} />
             <Route path="/profiles/:userID" render={(props) => <Content {...props} getUserImg={this.getUserImg} />} />
             <Footer />
           </Container>
