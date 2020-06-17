@@ -4,7 +4,7 @@ import {FaAngleDown} from 'react-icons/fa'
 
 function RightSideFeed() {
     return (
-        <Col md={3} style={{ fontSize: '18px'}}>
+        <Col md={3} className="offset-md-9" style={{ fontSize: '18px'}}>
             <Card className="text-center" style={{ width: '100%', height: '25rem' }}>
                 <Card.Header className="d-flex justify-content-end">Ad...</Card.Header>
                 <Card.Body className="d-flex flex-column justify-content-between align-items-center">
