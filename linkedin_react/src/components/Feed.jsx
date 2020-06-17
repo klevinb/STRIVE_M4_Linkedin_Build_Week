@@ -3,6 +3,7 @@ import { Container, Row, Col, Spinner, Modal, FormControl, Button } from 'react-
 import FeedContent from './FeedContent'
 import FeedPosts from './FeedPosts'
 import RightSideFeed from './RightSideFeed'
+import LeftSideBar from "./LeftSideBar"
 import { TiCameraOutline } from 'react-icons/ti'
 import { BsCameraVideo, BsPencilSquare } from 'react-icons/bs'
 import { FiFileText } from 'react-icons/fi'
@@ -72,6 +73,7 @@ class Feed extends Component {
 
     render() {
         return (
+
             <Container className="content mt-4 mb-4">
                 {this.state.loading &&
                     <div className="d-flex justify-content-center align-items-center" style={{ width: '100%', height: "100vh" }}>
@@ -82,9 +84,7 @@ class Feed extends Component {
                     {this.state.feeds &&
                         <>
                             <Col md={3} className="d-flex flex-column mb-3" >
-                                <div>
-                                    Sidebar
-                                </div>
+                                <LeftSideBar/>
                             </Col>
                             <Col md={6} className="d-flex flex-column mb-3 " >
                                 <FeedContent addNewPost={this.showModal} />
@@ -118,6 +118,7 @@ class Feed extends Component {
                         </div>
                     </div>
                 </Modal>
+
 
             </Container >
         );
