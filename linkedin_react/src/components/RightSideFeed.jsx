@@ -14,7 +14,6 @@ function RightSideFeed() {
                     </Card.Text>
                     <Button variant="outline-primary">Follow</Button>
                 </Card.Body>
-                <Card.Footer className="text-muted"></Card.Footer>
             </Card>
         </Col>
     )
