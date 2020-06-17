@@ -3,9 +3,9 @@ import {Col, Card, Button} from 'react-bootstrap'
 
 function RightSideFeed() {
     return (
-        <div>
+        <Col md={3}>
             Some Content to the right!!!
-        </div>
+        </Col>
     )
 }
 
