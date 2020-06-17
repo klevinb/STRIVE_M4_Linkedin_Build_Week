@@ -37,7 +37,7 @@ class NavBar extends Component {
               <Navbar.Collapse id="basic-navbar-nav">
 
                 <Nav className='mr-auto text-white'>
-                  <Link className='text-white mr-2' to="/" >
+                  <Link className='text-white mr-2' to="/feed" >
                     <FaHome />
                     Home
                   </Link>
@@ -46,15 +46,15 @@ class NavBar extends Component {
                     <FaUserFriends />
                     My Network
                   </Link>
-                  <Link className='text-white mr-2' to="/my-network" >
+                  <Link className='text-white mr-2' to="/jobs" >
                     <FaSuitcase />
                     Jobs
                   </Link>
-                  <Link className='text-white mr-2' to="/my-network" >
+                  <Link className='text-white mr-2' to="/messaging" >
                     <BsChatSquareDots />
                     Messaging
                   </Link>
-                  <Link className='text-white mr-2' to="/my-network" >
+                  <Link className='text-white mr-2' to="/notifications" >
                     <AiOutlineBell />
                     Notifications
                   </Link>
@@ -65,7 +65,7 @@ class NavBar extends Component {
                     <Image src='https://img.icons8.com/officel/2x/user.png' style={{ width: "25px", height: "25px", borderRadius: "35%", margin: "0" }} />
                   }
                   <NavDropdown title="Dropdown" className="basic-nav-dropdown" variant="light" title='Me'>
-                    <Link className='nav-link' to="/me" >
+                    <Link className='nav-link' to="/profiles/me" >
                       My acc
                   </Link>
                   </NavDropdown>
@@ -74,7 +74,7 @@ class NavBar extends Component {
                     <NavDropdown.Item >Action</NavDropdown.Item>
                   </NavDropdown>
 
-                  <Link className='text-white mr-2' to="/my-network" >
+                  <Link className='text-white mr-2' to="/learning" >
                     <FaVideo />
                     Learning
                   </Link>
