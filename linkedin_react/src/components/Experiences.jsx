@@ -29,7 +29,6 @@ class Experiences extends Component {
 
     componentDidUpdate = async () => {
         if (this.state.userID !== this.props.userID) {
-            console.log('EXPERIENCES from new user')
             this.setState({ userID: this.props.userID }, async () => {
                 await fetch("https://striveschool.herokuapp.com/api/profile/" + this.props.userID + "/experiences", {
                     headers: new Headers({
@@ -50,16 +49,15 @@ class Experiences extends Component {
         return (
             <>
                 <div className="mainContent p-4 mb-3">
-                    {console.log(this.state.userData)}
                     <div className="d-flex justify-content-between">
                         <h4>Experiences</h4>
                         <div>
                             <AiOutlinePlus />
                         </div>
                     </div>
-                    {this.state.userData && this.state.userData.map(user =>
+                    {this.state.userData && this.state.userData.map((user, i) =>
 
-                        <div className="pt-4">
+                        <div key={i} className="pt-4">
                             <div id="experienceContent" className="d-flex justify-content-between">
                                 <div className="d-flex align-items-center ">
                                     <div id="iconDiv">
