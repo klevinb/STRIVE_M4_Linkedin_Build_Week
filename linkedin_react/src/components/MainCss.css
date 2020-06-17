@@ -214,7 +214,7 @@
 .postContent {
     border: 1px solid lightgray;
     background-color: white;
-    position: relative;
+    position: relative; 
 }
 
 #postImage {
@@ -237,4 +237,29 @@
     font-size: 28px;
     margin-left: 20px;
     color: black !important;
+}
+
+#profilePhotoLeftSideBar {
+    border: 5px solid lightgray;
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    position: absolute;
+    top: 11%;
+    left: 29%;
+}
+#profilePhotoLeftSideBar img{
+    object-fit: fill;
+    height: 100%;
+    width: 100%;
+}
+
+#jumbotronLeftSide {
+    height: 140px !important;
+    overflow: hidden;
+}
+
+.box-shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }

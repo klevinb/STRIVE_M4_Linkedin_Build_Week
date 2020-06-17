@@ -8,7 +8,7 @@ import { GiCancel } from 'react-icons/gi'
 function JumBotron(props) {
 
     return (
-        <div id="jumbotronMain" className="contentCol" >
+        <div id="jumbotronMain" className="contentCol box-shadow " >
             <div id='cameraIcon'>
                 {props.profileInfo.username === "user16" &&
                     <TiCameraOutline />

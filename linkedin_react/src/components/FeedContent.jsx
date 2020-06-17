@@ -6,8 +6,8 @@ import { FiFileText } from 'react-icons/fi'
 
 function FeedContent(props) {
     return (
-        <div className="mb-3">
-            <div className="postContainer d-flex">
+        <div className="mb-3 box-shadow ">
+            <div className="postContainer d-flex" >
                 <div className="mainPostButton ">
                     <Button onClick={() => props.addNewPost()}>
                         <div className="d-flex">

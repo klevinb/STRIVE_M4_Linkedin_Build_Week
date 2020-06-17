@@ -75,30 +75,36 @@ class Feed extends Component {
         return (
 
             <Container className="content mt-4 mb-4">
-                {this.state.loading &&
-                    <div className="d-flex justify-content-center align-items-center" style={{ width: '100%', height: "100vh" }}>
-                        <Spinner style={{ fontSize: "200px" }} animation="grow" variant="secondary" />
-                    </div>
-                }
-                <Row>
-                    {this.state.feeds &&
-                        <>
-                            <Col md={3} className="d-flex flex-column mb-3" >
-                                <LeftSideBar/>
-                            </Col>
-                            <Col md={6} className="d-flex flex-column mb-3 " >
-                                <FeedContent addNewPost={this.showModal} />
-                                {this.state.feeds && this.state.feeds.map(post =>
-                                    <FeedPosts loading={this.state.loading} info={post} />
-                                )}
-                            </Col>
-                            <Col md={3} className="sideContent">
-                                <RightSideFeed />
-                            </Col>
 
-                        </>
-                    }
-                </Row>
+                {this.state.loading ?
+                    <>
+                        <div className="d-flex justify-content-center align-items-center" style={{ width: '100%', height: "100vh" }}>
+                            <Spinner style={{ fontSize: "200px" }} animation="grow" variant="secondary" />
+                        </div>
+                    </>
+                    :
+                    <Row>
+                        {this.state.feeds &&
+                            <>
+                                <Col md={3} className="d-flex flex-column mb-3" >
+                                    {this.props.users && this.props.users.filter(user => user.username === "user16").map((user, i) =>
+                                        <LeftSideBar key={i} info={user} />
+                                    )}
+                                </Col>
+                                <Col md={6} className="d-flex flex-column mb-3 " >
+                                    <FeedContent addNewPost={this.showModal} />
+                                    {this.state.feeds && this.state.feeds.map((post, i) =>
+                                        <FeedPosts key={i} loading={this.state.loading} info={post} />
+                                    )}
+                                </Col>
+                                <Col md={3} className="sideContent">
+                                    <RightSideFeed />
+                                </Col>
+
+                            </>
+                        }
+                    </Row>
+                }
                 <Modal show={this.state.showModal} onHide={() => this.setState({ showModal: false })}>
                     <Modal.Header closeButton>
                         <Modal.Title>Create a post</Modal.Title>

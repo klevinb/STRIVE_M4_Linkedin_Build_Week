@@ -48,7 +48,7 @@ class Experiences extends Component {
     render() {
         return (
             <>
-                <div className="mainContent p-4 mb-3">
+                <div className="mainContent p-4 mb-3 box-shadow ">
                     <div className="d-flex justify-content-between">
                         <h4>Experiences</h4>
                         <div>

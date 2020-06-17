@@ -14,7 +14,7 @@ class FeedPosts extends Component {
 
     render() {
         return (
-            <div className="postContent mb-2">
+            <div className="postContent box-shadow  mb-2">
                 <div className='d-flex align-items-center p-3'>
                     <div id="postImage" className='mr-3'>
                         {this.props.info.user.image ?

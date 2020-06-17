@@ -5,7 +5,7 @@ import { FaAngleDown } from 'react-icons/fa'
 function RightSideFeed() {
     return (
         <div >
-            <Card className="text-center" style={{ width: '100%', height: '35rem' }}>
+            <Card className="text-center box-shadow " style={{ width: '100%', height: '35rem' }}>
                 <Card.Header className="d-flex justify-content-center">Add to your feed</Card.Header>
                 <Card.Body className="d-flex flex-column justify-content-between align-items-center">
                     <Card.Title>Get the latest jobs and industry news!</Card.Title>

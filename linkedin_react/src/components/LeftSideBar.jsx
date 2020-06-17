@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Container, Row, Col, Jumbotron} from "react-bootstrap"
+import { Container, Image, Col, Jumbotron } from "react-bootstrap"
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,119 +12,124 @@ export class SideBar extends Component {
     return (
       <Router>
         <div>
-        <Container>
-          <Row>
-            <Col className="d-flex flex-column">
-            <div style={{backgroundColor: "#f5f5f5", border: "1px solid lightgrey", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}} className="mb-4">
-              <div>
-              <Jumbotron fluid style={{backgroundColor: "#f5f5f5"}}>
-                  <Container>
-                   
-                    
-                    
-                  </Container>
-                  <h5 className="text-center">Welcome, Shiji</h5>
+
+          <div style={{ backgroundColor: "white", border: "1px solid lightgrey", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" }} className="mb-4">
+            <div>
+              <Jumbotron fluid style={{ backgroundColor: "white", padding: "0" }}>
+                <Container style={{ position: "relative", padding: "0" }}>
+
+                  <div id="jumbotronLeftSide">
+                    <Image fluid className="w-100" src="/assets/jumbotronCover.jpeg" />
+                  </div>
+                  <div id="profilePhotoLeftSideBar">
+                    {this.props.info.image
+                      ? <Image src={this.props.info.image} />
+                      : <Image src='https://img.icons8.com/officel/2x/user.png' />
+                    }
+                  </div>
+                  <h5 className="text-center">Welcome, {this.props.info.name}</h5>
 
                   <div className="text-center">
-                   <Link>Update your profile</Link>
+                    <Link>Update your profile</Link>
                   </div>
 
-                  
+                </Container>
+
+
               </Jumbotron>
-              <hr/>
-              <Link>
-                <div className="d-flex justify-content-between">
-                  <div>
-                    <p>Connections <br/> Grow your network </p>
+              <hr />
+              <div className="p-3">
+
+                <Link>
+                  <div className="d-flex justify-content-between">
+                    <div>
+                      <p>Connections <br /> Grow your network </p>
+                    </div>
+
+                    <div>
+                      <p>80</p>
+                    </div>
                   </div>
+                </Link>
 
-                  <div>
-                    <p>80</p>
+                <Link>
+                  <div className="d-flex justify-content-between">
+                    <div>
+                      <p>Who viewed your profile</p>
+                    </div>
+
+                    <div>
+                      <p>22</p>
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
 
-              <Link>
-                <div className="d-flex justify-content-between">
-                  <div>
-                    <p>Who viewed your profile</p>
-                  </div>
+                <hr />
 
-                  <div>
-                    <p>22</p>
-                  </div>
-                </div>
-              </Link>
-
-              <hr/>
-
-              <Link>
-                <p>See all Premium features</p>
-              </Link>
+                <Link>
+                  <p>See all Premium features</p>
+                </Link>
 
 
-              <hr/>
+                <hr />
 
-              <Link>
-                <p>Saved items</p>
-              </Link>
-
-
-
-
-
+                <Link>
+                  <p>Saved items</p>
+                </Link>
               </div>
+
+
+
+
 
             </div>
 
+          </div>
 
-            <Col style={{backgroundColor: "#f5f5f5", border: "1px solid lightgrey", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}>
-              <div>
+
+          <Col style={{ backgroundColor: "white", border: "1px solid lightgrey", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" }}>
+            <div>
               <h4 className="mt-3">Recent</h4>
               <Link>
-                  <div>
-                    <h6>HTML & CSS learning group</h6>
-                  </div>  
+                <div>
+                  <h6>HTML & CSS learning group</h6>
+                </div>
               </Link>
 
               <h4 className="mt-3">Recent</h4>
               <Link>
-                  <div>
-                    <h6>HTML & CSS learning group</h6>
-                    <p>See all</p>
-                  </div>  
+                <div>
+                  <h6>HTML & CSS learning group</h6>
+                  <p>See all</p>
+                </div>
               </Link>
 
 
-              
+
 
               <div className="d-flex justify-content-between">
-                  <div>
-                    <p>Event</p>
-                  </div>
-
-                  <div>
-                    <p>+</p>
-                  </div>
+                <div>
+                  <p>Event</p>
                 </div>
 
-                <hr/>
+                <div>
+                  <p>+</p>
+                </div>
+              </div>
+
+              <hr />
 
               <Link>
                 <p>Discover More</p>
               </Link>
+            </div>
 
-              </div>
-
-            </Col>
-
+          </Col>
 
 
-            </Col>
 
-          </Row>
-        </Container>
-      </div>
+
+        </div>
       </Router>
     )
   }
