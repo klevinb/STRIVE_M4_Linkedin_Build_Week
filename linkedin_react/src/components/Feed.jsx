@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Spinner, Modal, FormControl, Button } from 'react-bootstrap'
 import FeedContent from './FeedContent'
 import FeedPosts from './FeedPosts'
+import RightSideFeed from './RightSideFeed'
 import { TiCameraOutline } from 'react-icons/ti'
 import { BsCameraVideo, BsPencilSquare } from 'react-icons/bs'
 import { FiFileText } from 'react-icons/fi'
@@ -91,10 +92,8 @@ class Feed extends Component {
                                     <FeedPosts loading={this.state.loading} info={post} />
                                 )}
                             </Col>
-                            <Col md={3} className="sideContent pl-4 pt-4">
-                                <div>
-                                    Sidebar
-                                </div>
+                            <Col md={3} className="sideContent">
+                                <RightSideFeed />
                             </Col>
 
                         </>
