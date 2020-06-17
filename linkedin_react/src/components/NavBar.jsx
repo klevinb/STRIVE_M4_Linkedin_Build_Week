@@ -59,7 +59,11 @@ class NavBar extends Component {
                     Notifications
                   </Link>
 
-                  <Image src={this.props.src} style={{ width: "25px", height: "25px", borderRadius: "35%", margin: "0" }} />
+                  {this.props.src ?
+                    <Image src={this.props.src} style={{ width: "25px", height: "25px", borderRadius: "35%", margin: "0" }} />
+                    :
+                    <Image src='https://img.icons8.com/officel/2x/user.png' style={{ width: "25px", height: "25px", borderRadius: "35%", margin: "0" }} />
+                  }
                   <NavDropdown title="Dropdown" className="basic-nav-dropdown" variant="light" title='Me'>
                     <Link className='nav-link' to="/me" >
                       My acc
