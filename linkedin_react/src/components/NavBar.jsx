@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, Image, Navbar, NavDropdown, Form, FormControl, Container } from 'react-bootstrap';
+import { Nav, Image, Navbar, NavDropdown, Dropdown, FormControl, Container } from 'react-bootstrap';
 import './NavBar.css';
 import { FaHome, FaSuitcase, FaUserFriends, FaVideo } from 'react-icons/fa';
 import { BsChatSquareDots } from 'react-icons/bs'
@@ -21,12 +21,12 @@ class NavBar extends Component {
               <Navbar.Brand href="#home">
 
               </Navbar.Brand>
-
-              <Form inline>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-
-              </Form>
-
+              <Dropdown show={this.props.status}>
+                <Dropdown.Menu>
+                  {this.props.users}
+                </Dropdown.Menu>
+              </Dropdown>
+              <FormControl onChange={(event) => this.props.search(event.currentTarget.value)} type="text" placeholder="Search" className="mr-sm-2" />
             </div>
 
 
