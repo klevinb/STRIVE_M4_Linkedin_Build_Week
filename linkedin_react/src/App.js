@@ -101,7 +101,7 @@ class App extends Component {
               />
             } />
             <Route path="/feed" exact component={Feed} />
-            <Route path="/rightsidefeed" exact component={RightSideFeed} />
+            <Route path="/asidefeed" exact component={RightSideFeed} />
             <Route path="/profiles/:userID" render={(props) => <Content {...props} getUserImg={this.getUserImg} />} />
             <Footer />
           </Container>
