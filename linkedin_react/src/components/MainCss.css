@@ -4,6 +4,7 @@
     padding: 0 !important;
     border-radius: 3px;
     max-height: 570px;
+    position: relative;
 }
 .container-fluid {
     background-color: #f5f5f5;
@@ -76,7 +77,7 @@
     height: 200px;
     overflow: hidden;
     position: absolute;
-    top: 14%;
+    top: 25%;
     left: 6%;
 }
 #profilePhoto img{
@@ -136,4 +137,17 @@
     width: 60px;
     height: 60px;
     background-color: lightgray;
+}
+
+
+.mainContent {
+    border: 0.5px solid lightgray;
+    padding: 0 !important;
+    border-radius: 3px;
+}
+
+.mainContent svg {
+    font-size: 35px;
+    margin-left: 20px;
+    color:  #0073b1 !important;
 }
