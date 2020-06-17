@@ -9,7 +9,7 @@ function FeedContent(props) {
         <div className="mb-3">
             <div className="postContainer d-flex">
                 <div className="mainPostButton ">
-                    <Button>
+                    <Button onClick={() => props.addNewPost()}>
                         <div className="d-flex">
                             <BsPencilSquare />
                             <p style={{ color: 'rgb(100, 100, 100)', marginLeft: '20px' }}>Start a post</p>
@@ -30,17 +30,9 @@ function FeedContent(props) {
                 </div>
 
             </div>
-
-
-            <div className="pt-4">
-                <div id="experienceContent" className="d-flex justify-content-between">
-
-                    <div>
-
-                    </div>
-                </div>
+            <div id="feedContent" className="d-flex justify-content-between">
+                <p><span>Write an article</span> on LinkedIn</p>
             </div>
-
         </div>
     );
 }
