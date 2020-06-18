@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, Button, DropdownButton, Dropdown } from 'react-bootstrap'
+import { Image, ListGroup, Dropdown } from 'react-bootstrap'
 import { BsThreeDots } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { AiOutlineLike, AiFillLike } from 'react-icons/ai'
@@ -10,7 +10,14 @@ class FeedPosts extends Component {
 
     state = {
         clicked: false,
-        showDropdown: false
+        showDropdown: false,
+        showComments: "none",
+        comments: [],
+        newComment: {
+            rate: '5',
+            comment: "",
+            elementId: this.props.info._id
+        }
     }
 
     deletePost = (id) => {
@@ -20,11 +27,56 @@ class FeedPosts extends Component {
         });
     }
 
+    addComment = (event) => {
+        const newComment = this.state.newComment
+        newComment[event.currentTarget.className] = event.currentTarget.value
+        this.setState({
+            newComment
+        });
+    }
+    keyPressed = async (event) => {
+        if (event.key === "Enter") {
+            const commentsUrl = "https://striveschool.herokuapp.com/api/comments/";
+            const response = await fetch(commentsUrl, {
+                method: "POST",
+                body: JSON.stringify(this.state.newComment),
+                headers: new Headers({
+                    'Authorization': 'Basic ' + btoa("user16:c9WEUxMS294hN6fF"),
+                    "Content-Type": "application/json",
+                }),
+            });
+            if (response.ok) {
+                alert("Comment added");
+                this.setState({
+                    newComment: {
+                        comment: "",
+                        rate: "5",
+                        elementId: this.props.info._id,
+                    },
+                });
+            } else {
+                alert("An error has occurred");
+            }
+        }
+    }
+
+
+    componentDidMount = async () => {
+        const commentsUrl = "https://striveschool.herokuapp.com/api/comments/";
+        const comments = await fetch(commentsUrl + this.props.info._id, {
+            headers: new Headers({
+                'Authorization': 'Basic ' + btoa("user16:c9WEUxMS294hN6fF"),
+            }),
+        }).then((response) => response.json());
+        this.setState({ comments });
+    }
+
+
     render() {
         return (
             <div className="postContent box-shadow  mb-2">
                 <div className='postHeader d-flex align-items-center p-3'>
-                    <div id="postImage" className='mr-3'>
+                    <div className="imgSmall mr-3" >
                         {this.props.info.user.image ?
                             <Link to={"/profiles/" + this.props.info.user.username}>
                                 <Image fluid src={this.props.info.user.image} />
@@ -51,7 +103,7 @@ class FeedPosts extends Component {
                         </div>
 
                     </div>
-                    <div id="dropDownMenu">
+                    <div className="dropDownMenu">
                         <Dropdown.Menu show={this.state.showDropdown}>
                             <Dropdown.Item onSelect={() => console.log("Edit")}>Edit</Dropdown.Item>
                             <Dropdown.Item onSelect={() => this.deletePost(this.props.info._id)}>Delete</Dropdown.Item>
@@ -78,10 +130,35 @@ class FeedPosts extends Component {
                                 <AiOutlineLike /> Like
                             </div>
                         }
-                        <div onClick={() => console.log("Add a comment")}>
+                        <div onClick={() => this.setState({ showComments: true })}>
                             <GoComment /> Comment
                         </div>
                         <FaShare /> Share
+                    </div>
+                    <div className="d-flex flex-column ml-3" style={{ display: "'" + this.state.showComments + "'" }}>
+                        <div className="commentImg d-flex">
+                            {this.props.src ?
+                                <Image src={this.props.src} />
+                                :
+                                <Image src='https://img.icons8.com/officel/2x/user.png' />
+                            }
+                            <div className="inputComment">
+                                <input className="comment" onChange={this.addComment}
+                                    onKeyPress={this.keyPressed} type="text" placeholder="Write a new comment" />
+                            </div>
+                        </div>
+                        <div className="mt-3 mr-3">
+                            {this.state.comments &&
+                                <>
+                                    <ListGroup>
+                                        {this.state.comments.map((comment, i) =>
+                                            <ListGroup.Item key={i}>{comment.comment}</ListGroup.Item>
+                                        )}
+                                    </ListGroup>
+                                </>
+                            }
+                        </div>
+
                     </div>
                 </div>
             </div >

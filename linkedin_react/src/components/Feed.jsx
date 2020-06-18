@@ -17,7 +17,8 @@ class Feed extends Component {
         showModal: false,
         newPost: {
             text: ''
-        }
+        },
+        image: ''
     }
 
     fetchPosts = async () => {
@@ -32,6 +33,14 @@ class Feed extends Component {
                 feeds: respObj.reverse(),
                 loading: false
             }))
+    }
+
+    saveImg = (event) => {
+        let photo = new FormData()
+        photo.append('post', event.target.files[0])
+        this.setState({
+            image: photo
+        });
     }
 
     componentDidMount() {
@@ -61,6 +70,20 @@ class Feed extends Component {
                 "Content-Type": "application/json",
             }),
         })
+        const data = await resp.json()
+        const id = data._id
+
+        setTimeout(async () => {
+
+            const resp = await fetch("https://striveschool.herokuapp.com/api/posts/" + id, {
+                method: "POST",
+                body: this.state.image,
+                headers: new Headers({
+                    'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
+                }),
+            }, 2000)
+        })
+
         if (resp.ok) {
             alert("You posted some new content!")
             this.setState({
@@ -69,6 +92,7 @@ class Feed extends Component {
         }
 
     }
+
 
 
     render() {
@@ -94,7 +118,9 @@ class Feed extends Component {
                                 <Col md={6} className="d-flex flex-column mb-3 " >
                                     <FeedContent addNewPost={this.showModal} />
                                     {this.state.feeds && this.state.feeds.map((post, i) =>
-                                        <FeedPosts key={i} loading={this.state.loading} info={post} />
+                                        <>
+                                            <FeedPosts src={this.props.src} key={i} loading={this.state.loading} info={post} />
+                                        </>
                                     )}
                                 </Col>
                                 <Col md={3} className="sideContent">
@@ -115,7 +141,12 @@ class Feed extends Component {
                     <div className="d-flex justify-content-between">
                         <div className="modalIcons p-3 d-flex">
                             <AiOutlinePlus />
-                            <TiCameraOutline />
+                            <div>
+                                <label htmlFor="upload">
+                                    <TiCameraOutline />
+                                </label>
+                            </div>
+                            <input style={{ display: "none" }} type="file" id="upload" profile="file" onChange={this.saveImg} accept="image/*" />
                             <BsCameraVideo />
                             <FiFileText />
                         </div>

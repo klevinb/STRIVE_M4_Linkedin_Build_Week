@@ -92,6 +92,7 @@ class Experiences extends Component {
             showModal: false,
             addExperience: false,
             editExperience: false,
+
         }))
             .catch(err => console.log(err))
     }
@@ -110,6 +111,7 @@ class Experiences extends Component {
                 showModal: false,
                 addExperience: false,
                 editExperience: false,
+
             });
         }
     }
@@ -126,12 +128,28 @@ class Experiences extends Component {
             })
         })
 
+        const data = await resp.json()
+        const id = data._id
+
+        setTimeout(async () => {
+            await fetch("https://striveschool.herokuapp.com/api/profile/" + this.props.userID + "/experiences/" + id + "/picture", {
+                method: "POST",
+                body: this.state.image,
+                headers: new Headers({
+                    'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
+                })
+            })
+        })
+
+
+
         if (resp.ok) {
             alert("You just added a new Expereince!")
             this.setState({
                 showModal: false,
                 addExperience: false,
                 editExperience: false,
+
             });
         }
 
@@ -177,7 +195,10 @@ class Experiences extends Component {
                         <h4>Experiences</h4>
                         <div>
                             {this.props.userID === "user16" &&
-                                <div onClick={() => this.setState({ showModal: true, addExperience: true })}>
+                                <div onClick={() => this.setState({
+                                    showModal: true,
+                                    addExperience: true
+                                })}>
                                     <AiOutlinePlus />
                                 </div>
                             }
@@ -218,7 +239,19 @@ class Experiences extends Component {
                             </div>
                         </div>
                     )}
-                    <Modal show={this.state.showModal} onHide={() => this.setState({ showModal: false, addExperience: false, editExperience: false })}>
+                    <Modal show={this.state.showModal} onHide={() => this.setState({
+                        showModal: false,
+                        addExperience: false,
+                        editExperience: false,
+                        newExperience: {
+                            role: '',
+                            company: '',
+                            startDate: '',
+                            endDate: '',
+                            description: '',
+                            area: '',
+                        },
+                    })}>
                         {this.state.addExperience &&
                             <>
                                 <Modal.Header >
@@ -286,6 +319,8 @@ class Experiences extends Component {
                                                 </Form.Group>
                                             </Col>
                                         </Row>
+                                        <label>Image</label>
+                                        <input type="file" id="image" profile="file" onChange={this.saveImg} accept="image/*" />
                                         <br></br>
                                         <Button className="align-self-center" variant="primary" type="submit">
                                             Submit

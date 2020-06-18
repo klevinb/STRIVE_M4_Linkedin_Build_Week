@@ -96,7 +96,7 @@ class App extends Component {
 
               } src={this.state.userImg}
             />
-            <Route path="/feed" exact render={(props) => <Feed {...props} users={this.state.users} />} />
+            <Route path="/feed" exact render={(props) => <Feed {...props} users={this.state.users} src={this.state.userImg} />} />
             <Route path="/profiles/:userID" render={(props) => <Content {...props} getUserImg={this.getUserImg} />} />
             <Footer />
           </Container>
