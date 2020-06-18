@@ -32,7 +32,7 @@ class JumBotron extends Component {
         this.setState({
             profile
         });
-        setTimeout(() => this.handleUpload(), 1000)
+        setTimeout(() => this.handleUpload(), 500)
     }
 
     render() {
