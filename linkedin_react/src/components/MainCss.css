@@ -278,3 +278,10 @@
     opacity: 1 !important;
     pointer-events: painted !important;
 }
+
+#editPhoto {
+    position: absolute;
+    bottom: 9%;
+    right: 17%;
+    z-index: 99;
+}
