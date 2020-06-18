@@ -133,14 +133,16 @@
     color: gray !important;
 }
 #iconDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
-    height: 60px;
-    background-color: lightgray;
+    width: 100px;
+    height: 100px;
+    border-radius: 35%;
+    overflow: hidden;
 }
 
+#iconDiv img{
+    height: 100%;
+    width: 100%;
+}
 
 .mainContent {
     border: 0.5px solid lightgray;

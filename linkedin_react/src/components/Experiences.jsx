@@ -63,8 +63,8 @@ class Experiences extends Component {
                             <div id="experienceContent" className="d-flex justify-content-between">
                                 <div className="d-flex align-items-center ">
                                     <div id="iconDiv">
-
-                                        <FaRegBuilding />
+                                        <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ740vBil8G_3EkVFB4yXGqABpfZ3ILqbpONCgBaG4FJkuJCngQ&usqp=CAU'></Image>
+                                        
                                     </div>
                                     <div className="ml-4">
                                         <h5>{user.role}</h5>
