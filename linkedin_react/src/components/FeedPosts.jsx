@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image } from 'react-bootstrap'
+import { Image, Button, DropdownButton, Dropdown } from 'react-bootstrap'
 import { BsThreeDots } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { AiOutlineLike, AiFillLike } from 'react-icons/ai'
@@ -9,13 +9,21 @@ import { FaShare } from 'react-icons/fa'
 class FeedPosts extends Component {
 
     state = {
-        clicked: false
+        clicked: false,
+        showDropdown: false
+    }
+
+    deletePost = (id) => {
+        console.log(id)
+        this.setState({
+            showDropdown: false
+        });
     }
 
     render() {
         return (
             <div className="postContent box-shadow  mb-2">
-                <div className='d-flex align-items-center p-3'>
+                <div className='postHeader d-flex align-items-center p-3'>
                     <div id="postImage" className='mr-3'>
                         {this.props.info.user.image ?
                             <Link to={"/profiles/" + this.props.info.user.username}>
@@ -37,7 +45,18 @@ class FeedPosts extends Component {
                         <label className="m-0">Time</label>
                     </div>
                     <div className="postOptions">
-                        <BsThreeDots />
+
+                        <div onClick={() => this.setState({ showDropdown: !this.state.showDropdown })}>
+                            <BsThreeDots />
+                        </div>
+
+                    </div>
+                    <div id="dropDownMenu">
+                        <Dropdown.Menu show={this.state.showDropdown}>
+                            <Dropdown.Item onSelect={() => console.log("Edit")}>Edit</Dropdown.Item>
+                            <Dropdown.Item onSelect={() => this.deletePost(this.props.info._id)}>Delete</Dropdown.Item>
+                            <Dropdown.Item onSelect={() => console.log("Something else")}>Something else</Dropdown.Item>
+                        </Dropdown.Menu>
                     </div>
                 </div>
                 <div className="p-3">
@@ -60,7 +79,7 @@ class FeedPosts extends Component {
                         <FaShare /> Share
                     </div>
                 </div>
-            </div>
+            </div >
 
         );
     }
