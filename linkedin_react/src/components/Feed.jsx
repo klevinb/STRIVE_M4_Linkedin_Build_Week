@@ -93,7 +93,7 @@ class Feed extends Component {
                                 </Col>
                                 <Col md={6} className="d-flex flex-column mb-3 " >
                                     <FeedContent addNewPost={this.showModal} />
-                                    {this.state.feeds && this.state.feeds.filter(user => user.username === "user16").map((post, i) =>
+                                    {this.state.feeds && this.state.feeds.map((post, i) =>
                                         <FeedPosts key={i} loading={this.state.loading} info={post} />
                                     )}
                                 </Col>

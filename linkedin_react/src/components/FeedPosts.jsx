@@ -59,8 +59,13 @@ class FeedPosts extends Component {
                         </Dropdown.Menu>
                     </div>
                 </div>
-                <div className="p-3">
+                <div className="postImage p-3">
                     {this.props.info.text}
+                    {this.props.info.image &&
+                        <Image src={this.props.info.image} />
+                    }
+                </div>
+                <div className="p-3">
                     <hr></hr>
                     <div className="commentIcons d-flex">
                         {this.state.clicked ?
