@@ -20,11 +20,24 @@ class FeedPosts extends Component {
         }
     }
 
-    deletePost = (id) => {
-        console.log(id)
-        this.setState({
-            showDropdown: false
-        });
+    deletePost = async (id) => {
+        const resp = await fetch("https://striveschool.herokuapp.com/api/posts/" + id, {
+            method: "DELETE",
+            headers: new Headers({
+                'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
+            }),
+        })
+        if (resp.ok) {
+            alert("You deleted your post!")
+            this.setState({
+                showDropdown: false
+            });
+        } else {
+            alert("This is not your post!")
+            this.setState({
+                showDropdown: false
+            });
+        }
     }
 
     addComment = (event) => {
