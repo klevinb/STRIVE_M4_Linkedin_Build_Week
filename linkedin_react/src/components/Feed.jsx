@@ -143,7 +143,11 @@ class Feed extends Component {
                         <Modal.Title>Create a post</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <FormControl type="text" onChange={this.newPostHandler} placeholder="What do you want to talk about?" className="mr-sm-2" />
+                        <FormControl
+                            type="text"
+                            onChange={this.newPostHandler}
+                            placeholder="What do you want to talk about?"
+                            className="mr-sm-2" />
                     </Modal.Body>
                     <div className="d-flex justify-content-between">
                         <div className="modalIcons p-3 d-flex">
@@ -153,7 +157,12 @@ class Feed extends Component {
                                     <TiCameraOutline />
                                 </label>
                             </div>
-                            <input style={{ display: "none" }} type="file" id="upload" profile="file" onChange={this.saveImg} accept="image/*" />
+                            <input
+                                style={{ display: "none" }}
+                                type="file" id="upload"
+                                profile="file"
+                                onChange={this.saveImg}
+                                accept="image/*" />
                             <BsCameraVideo />
                             <FiFileText />
                         </div>
