@@ -65,7 +65,7 @@ class NavBar extends Component {
                   }
                   <NavDropdown title="Dropdown" className="basic-nav-dropdown" variant="light" title='Me'>
                     <NavDropdown.Item onSelect={() => this.props.history.push("/profiles/me")}>My Acc</NavDropdown.Item>
-                    <NavDropdown.Item onSelect={() => window.parent.location = window.parent.location.href} style={{ color: "red" }}><Link to="/login" refresh="true">Log Out</Link></NavDropdown.Item>
+                    <NavDropdown.Item onSelect={() => window.parent.location = window.parent.location.href} style={{ color: "red" }}><Link to="/" >Log Out</Link></NavDropdown.Item>
                   </NavDropdown>
 
                   <NavDropdown title="Dropdown" className="basic-nav-dropdown" title='Work'>

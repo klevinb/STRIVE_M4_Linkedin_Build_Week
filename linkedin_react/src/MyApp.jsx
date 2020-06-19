@@ -38,7 +38,7 @@ class MyApp extends Component {
                             username={this.state.username}
                         />
                     }
-                    <Route path="/login" exact render={(props) =>
+                    <Route path="/" exact render={(props) =>
                         <Login
                             {...props}
                             getAuthorization={this.getAuthorization}

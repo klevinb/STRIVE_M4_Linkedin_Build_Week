@@ -44,7 +44,6 @@ class Login extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log("ON SUBMIT")
         let user = this.state.users.filter(user =>
             user.name.toLowerCase() === this.state.name.toLowerCase() && user._id === this.state.password
         )
@@ -56,6 +55,8 @@ class Login extends Component {
             this.props.getAuthorization("dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=", "user16")
             this.props.history.push("/profiles/" + user[0].username)
             this.props.showApp()
+        } else {
+            alert("Plase user just watch out what you type!")
         }
 
 
