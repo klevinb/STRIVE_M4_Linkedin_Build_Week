@@ -33,7 +33,6 @@ class NavBar extends Component {
             <div>
 
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
-
               <Navbar.Collapse id="basic-navbar-nav">
 
                 <Nav className='mr-auto text-white'>
@@ -59,13 +58,14 @@ class NavBar extends Component {
                     Notifications
                   </Link>
 
-                  {this.props.src ?
-                    <Image src={this.props.src} style={{ width: "25px", height: "25px", borderRadius: "35%", margin: "0" }} />
+                  {this.props.userImage ?
+                    <Image src={this.props.userImage[0].image} style={{ width: "25px", height: "25px", borderRadius: "35%", margin: "0" }} />
                     :
                     <Image src='https://img.icons8.com/officel/2x/user.png' style={{ width: "25px", height: "25px", borderRadius: "35%", margin: "0" }} />
                   }
                   <NavDropdown title="Dropdown" className="basic-nav-dropdown" variant="light" title='Me'>
                     <NavDropdown.Item onSelect={() => this.props.history.push("/profiles/me")}>My Acc</NavDropdown.Item>
+                    <NavDropdown.Item onSelect={() => this.props.history.push("/login")} style={{ color: "red" }}>Log Out</NavDropdown.Item>
                   </NavDropdown>
 
                   <NavDropdown title="Dropdown" className="basic-nav-dropdown" title='Work'>

@@ -10,7 +10,7 @@ function UserContent(props) {
                 <div className="d-flex justify-content-between">
                     <h4>About</h4>
                     <div>
-                        {props.profileInfo.username === "user16" &&
+                        {props.profileInfo.username === props.username &&
                             <RiPencilLine />
                         }
                     </div>

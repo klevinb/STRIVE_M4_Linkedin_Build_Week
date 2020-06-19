@@ -4,7 +4,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  withRouter
 } from "react-router-dom";
 
 export class SideBar extends Component {
@@ -30,7 +31,7 @@ export class SideBar extends Component {
                   <h5 className="text-center">Welcome, {this.props.info.name}</h5>
 
                   <div className="text-center">
-                    <Link>Update your profile</Link>
+                    <Link to="/profiles/me">Update your profile</Link>
                   </div>
 
                 </Container>
@@ -135,4 +136,4 @@ export class SideBar extends Component {
   }
 }
 
-export default SideBar
+export default withRouter(SideBar)

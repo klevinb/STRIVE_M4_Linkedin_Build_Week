@@ -48,7 +48,7 @@ class Experiences extends Component {
         let resp = await fetch("https://striveschool.herokuapp.com/api/profile/" + this.props.userID + "/experiences/", {
 
             headers: new Headers({
-                'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
+                'Authorization': 'Basic ' + this.props.authoKey,
                 "Content-Type": "application/json",
             })
         }).then(resp => resp.json())
@@ -59,7 +59,7 @@ class Experiences extends Component {
                 newExperience.company = data[0].company
                 newExperience.description = data[0].description
                 newExperience.startDate = data[0].startDate.slice(0, 10)
-                newExperience.endDate = data[0].endDate.slice(0, 10)
+                newExperience.endDate = data[0].endDate
                 newExperience.area = data[0].area
                 this.setState({
                     newExperience
@@ -75,7 +75,7 @@ class Experiences extends Component {
                     method: "PUT",
                     body: JSON.stringify(this.state.newExperience),
                     headers: new Headers({
-                        'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
+                        'Authorization': 'Basic ' + this.props.authoKey,
                         "Content-Type": "application/json",
                     })
                 }),
@@ -84,7 +84,7 @@ class Experiences extends Component {
                     method: "POST",
                     body: this.state.image,
                     headers: new Headers({
-                        'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
+                        'Authorization': 'Basic ' + this.props.authoKey,
                     })
                 })
             ]
@@ -101,7 +101,7 @@ class Experiences extends Component {
         let resp = await fetch("https://striveschool.herokuapp.com/api/profile/" + this.props.userID + "/experiences/" + id, {
             method: "DELETE",
             headers: new Headers({
-                'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
+                'Authorization': 'Basic ' + this.props.authoKey,
             })
         })
 
@@ -123,7 +123,7 @@ class Experiences extends Component {
             method: "POST",
             body: JSON.stringify(this.state.newExperience),
             headers: new Headers({
-                'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
+                'Authorization': 'Basic ' + this.props.authoKey,
                 "Content-Type": "application/json",
             })
         })
@@ -136,7 +136,7 @@ class Experiences extends Component {
                 method: "POST",
                 body: this.state.image,
                 headers: new Headers({
-                    'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
+                    'Authorization': 'Basic ' + this.props.authoKey,
                 })
             })
         })
@@ -159,7 +159,7 @@ class Experiences extends Component {
     componentDidMount = async () => {
         await fetch("https://striveschool.herokuapp.com/api/profile/" + this.props.userID + "/experiences", {
             headers: new Headers({
-                'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
+                'Authorization': 'Basic ' + this.props.authoKey,
                 "Content-Type": "application/json",
             }),
         })
@@ -174,7 +174,7 @@ class Experiences extends Component {
             this.setState({ userID: this.props.userID }, async () => {
                 await fetch("https://striveschool.herokuapp.com/api/profile/" + this.props.userID + "/experiences", {
                     headers: new Headers({
-                        'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
+                        'Authorization': 'Basic ' + this.props.authoKey,
                         "Content-Type": "application/json",
                     }),
                 })
@@ -194,7 +194,7 @@ class Experiences extends Component {
                     <div className="d-flex justify-content-between">
                         <h4>Experiences</h4>
                         <div>
-                            {this.props.userID === "user16" &&
+                            {this.props.userID === this.props.username &&
                                 <div onClick={() => this.setState({
                                     showModal: true,
                                     addExperience: true
@@ -227,7 +227,7 @@ class Experiences extends Component {
                                 </div>
 
                                 <div>
-                                    {this.props.userID === "user16" &&
+                                    {this.props.userID === this.props.username &&
                                         <div onClick={() => {
                                             this.setState({ showModal: true, editExperience: true, editElementId: user._id })
                                             this.fetchUserData()

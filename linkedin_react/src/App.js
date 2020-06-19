@@ -12,13 +12,14 @@ class App extends Component {
     userImg: '',
     users: '',
     search: '',
-    show: false
+    show: false,
+    authoKey: this.props.authoKey
   }
 
   fetchUser = async () => {
     await fetch("https://striveschool.herokuapp.com/api/profile/", {
       headers: new Headers({
-        'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
+        'Authorization': 'Basic ' + this.props.authoKey,
         "Content-Type": "application/json",
       }),
     })
@@ -28,9 +29,12 @@ class App extends Component {
       }))
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
     this.fetchUser()
   }
+
+
+
 
   setSearch = (search) => {
     if (search) {
@@ -75,6 +79,9 @@ class App extends Component {
               setSearch={this.setSearch}
               searchValue={this.state.search}
               status={this.state.show}
+              userImage={this.state.users &&
+                this.state.users.filter(user => user.username === this.props.username)
+              }
               changeStatus={this.changeStatus}
               users=
               {this.state.users && this.state.search &&
@@ -94,10 +101,25 @@ class App extends Component {
                 <Dropdown.Item>No user with that name</Dropdown.Item>
 
 
-              } src={this.state.userImg}
+              }
             />
-            <Route path="/feed" exact render={(props) => <Feed {...props} users={this.state.users} src={this.state.userImg} />} />
-            <Route path="/profiles/:userID" render={(props) => <Content {...props} getUserImg={this.getUserImg} />} />
+            <Route path="/feed" exact render={(props) =>
+              <Feed
+                {...props}
+                authoKey={this.props.authoKey}
+                username={this.props.username}
+                users={this.state.users}
+                userImage={this.state.users &&
+                  this.state.users.filter(user => user.username === this.props.username)
+                } />}
+            />
+            <Route path="/profiles/:userID" render={(props) =>
+              <Content
+                {...props}
+                username={this.props.username}
+                authoKey={this.props.authoKey}
+                getUserImg={this.getUserImg} />}
+            />
             <Footer />
           </Container>
         </div>

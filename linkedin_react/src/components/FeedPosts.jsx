@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, ListGroup, Dropdown } from 'react-bootstrap'
+import { Image, ListGroup, Dropdown, Accordion, Button } from 'react-bootstrap'
 import { BsThreeDots } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { AiOutlineLike, AiFillLike } from 'react-icons/ai'
@@ -11,7 +11,6 @@ class FeedPosts extends Component {
     state = {
         clicked: false,
         showDropdown: false,
-        showComments: "none",
         comments: [],
         newComment: {
             rate: '5',
@@ -54,7 +53,7 @@ class FeedPosts extends Component {
                 method: "POST",
                 body: JSON.stringify(this.state.newComment),
                 headers: new Headers({
-                    'Authorization': 'Basic ' + btoa("user16:c9WEUxMS294hN6fF"),
+                    'Authorization': 'Basic ' + this.props.authoKey,
                     "Content-Type": "application/json",
                 }),
             });
@@ -78,7 +77,7 @@ class FeedPosts extends Component {
         const commentsUrl = "https://striveschool.herokuapp.com/api/comments/";
         const comments = await fetch(commentsUrl + this.props.info._id, {
             headers: new Headers({
-                'Authorization': 'Basic ' + btoa("user16:c9WEUxMS294hN6fF"),
+                'Authorization': 'Basic ' + this.props.authoKey,
             }),
         }).then((response) => response.json());
         this.setState({ comments });
@@ -132,47 +131,74 @@ class FeedPosts extends Component {
                 </div>
                 <div className="p-3">
                     <hr></hr>
-                    <div className="commentIcons d-flex">
-                        {this.state.clicked ?
-                            <div onClick={() => this.setState({ clicked: !this.state.clicked })}>
-                                <AiFillLike /> Liked
+                    <Accordion defaultActiveKey="">
+
+                        <div className="commentIcons d-flex">
+                            {this.state.clicked ?
+                                <div onClick={() => this.setState({ clicked: !this.state.clicked })}>
+                                    <AiFillLike /> Liked
                             </div>
 
-                            :
-                            <div onClick={() => this.setState({ clicked: !this.state.clicked })}>
-                                <AiOutlineLike /> Like
-                            </div>
-                        }
-                        <div onClick={() => this.setState({ showComments: true })}>
-                            <GoComment /> Comment
-                        </div>
-                        <FaShare /> Share
-                    </div>
-                    <div className="d-flex flex-column ml-3" style={{ display: "'" + this.state.showComments + "'" }}>
-                        <div className="commentImg d-flex">
-                            {this.props.src ?
-                                <Image src={this.props.src} />
                                 :
-                                <Image src='https://img.icons8.com/officel/2x/user.png' />
-                            }
-                            <div className="inputComment">
-                                <input className="comment" onChange={this.addComment}
-                                    onKeyPress={this.keyPressed} type="text" placeholder="Write a new comment" />
+                                <div onClick={() => this.setState({ clicked: !this.state.clicked })}>
+                                    <AiOutlineLike /> Like
                             </div>
-                        </div>
-                        <div className="mt-3 mr-3">
-                            {this.state.comments &&
-                                <>
-                                    <ListGroup>
-                                        {this.state.comments.map((comment, i) =>
-                                            <ListGroup.Item key={i}>{comment.comment}</ListGroup.Item>
-                                        )}
-                                    </ListGroup>
-                                </>
                             }
-                        </div>
 
+                            <Accordion.Toggle style={{ color: "black", margin: '0', textDecoration: "none" }} as={Button} variant="link" eventKey="1">
+                                <GoComment /> Comment
+                            </Accordion.Toggle>
+
+                            <FaShare /> Share
                     </div>
+
+                        <Accordion.Collapse eventKey="1">
+                            <div className="d-flex flex-column ml-3" style={{ display: "'" + this.state.showComments + "'" }}>
+                                <div className="commentImg d-flex">
+                                    {this.props.userImage ?
+                                        <Image src={this.props.userImage[0].image} />
+                                        :
+                                        <Image src='https://img.icons8.com/officel/2x/user.png' />
+                                    }
+                                    <div className="inputComment">
+                                        <input className="comment" onChange={this.addComment}
+                                            onKeyPress={this.keyPressed} type="text" placeholder="Write a new comment" />
+                                    </div>
+                                </div>
+                                <div className="mt-3 mr-3">
+                                    {this.state.comments && this.props.users &&
+
+                                        // this.props.users.filter(user => user.username === comment.id).map(user => )}
+
+                                        <>
+                                            <div>
+                                                {this.state.comments.map((comment, i) =>
+                                                    <>
+                                                        <div key={i} className="commentImg d-flex">
+                                                            <div>
+                                                                <Image src={this.props.users.find(user => user.username === comment.author).image} />
+                                                            </div>
+                                                            <div className="inputComment ml-3">
+                                                                <h6>
+                                                                    {this.props.users.find(user => user.username === comment.author).name + " "}
+                                                                    {this.props.users.find(user => user.username === comment.author).surname}
+                                                                </h6>
+                                                                {comment.comment}
+                                                            </div>
+                                                        </div>
+                                                    </>
+                                                )
+                                                }
+
+                                            </div>
+                                        </>
+                                    }
+                                </div>
+
+                            </div>
+                        </Accordion.Collapse>
+
+                    </Accordion>
                 </div>
             </div >
 

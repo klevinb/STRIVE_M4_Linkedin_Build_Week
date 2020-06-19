@@ -24,7 +24,7 @@ class Feed extends Component {
     fetchPosts = async () => {
         await fetch("https://striveschool.herokuapp.com/api/posts/", {
             headers: new Headers({
-                'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
+                'Authorization': 'Basic ' + this.props.authoKey,
                 "Content-Type": "application/json",
             }),
         })
@@ -66,7 +66,7 @@ class Feed extends Component {
             method: "POST",
             body: JSON.stringify(this.state.newPost),
             headers: new Headers({
-                'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
+                'Authorization': 'Basic ' + this.props.authoKey,
                 "Content-Type": "application/json",
             }),
         })
@@ -79,7 +79,7 @@ class Feed extends Component {
                 method: "POST",
                 body: this.state.image,
                 headers: new Headers({
-                    'Authorization': 'Basic ' + "dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=",
+                    'Authorization': 'Basic ' + this.props.authoKey,
                 }),
             }, 2000)
         })
@@ -111,15 +111,22 @@ class Feed extends Component {
                         {this.state.feeds &&
                             <>
                                 <Col md={3} className="d-flex flex-column mb-3" >
-                                    {this.props.users && this.props.users.filter(user => user.username === "user16").map((user, i) =>
-                                        <LeftSideBar key={i} info={user} />
+                                    {this.props.users && this.props.users.filter(user => user.username === this.props.username).map((user, i) =>
+                                        <LeftSideBar key={user._id} info={user} />
                                     )}
                                 </Col>
                                 <Col md={6} className="d-flex flex-column mb-3 " >
                                     <FeedContent addNewPost={this.showModal} />
-                                    {this.state.feeds && this.state.feeds.map((post, i) =>
+                                    {this.state.feeds && this.props.users && this.state.feeds.map((post, i) =>
                                         <>
-                                            <FeedPosts src={this.props.src} key={i} loading={this.state.loading} info={post} />
+                                            <FeedPosts
+                                                key={post.user._id}
+                                                users={this.props.users}
+                                                userImage={this.props.userImage}
+                                                authoKey={this.props.authoKey}
+                                                src={this.props.src} key={i}
+                                                loading={this.state.loading}
+                                                info={post} />
                                         </>
                                     )}
                                 </Col>
