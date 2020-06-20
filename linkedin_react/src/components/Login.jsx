@@ -55,7 +55,16 @@ class Login extends Component {
             this.props.getAuthorization("dXNlcjE2OmM5V0VVeE1TMjk0aE42ZkY=", "user16")
             this.props.history.push("/profiles/" + user[0].username)
             this.props.showApp()
-        } else {
+        } else if (user.length > 0 && user[0].name.toLowerCase() === "nomfundo verah") {
+            this.props.getAuthorization("dXNlcjIxOjJydXhhNE1SSmRVZ2c2Y3o=", "user21")
+            this.props.history.push("/profiles/" + user[0].username)
+            this.props.showApp()
+        } else if (user.length > 0 && user[0].name.toLowerCase() === "oluwasijibomi hafeez") {
+            this.props.getAuthorization("dXNlcjE0Oko4M3M4SnN2eWRSTk5qTHQ=", "user14")
+            this.props.history.push("/profiles/" + user[0].username)
+            this.props.showApp()
+        }
+        else {
             alert("Plase user just watch out what you type!")
         }
 
