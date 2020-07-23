@@ -41,7 +41,7 @@ class NavBar extends Component {
                     Home
                   </Link>
 
-                  <Link className='text-white mr-2' to="/my-network" >
+                  <Link className='text-white mr-2' to="/network" >
                     <FaUserFriends />
                     My Network
                   </Link>
