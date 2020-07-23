@@ -11,7 +11,8 @@ class SideContent extends React.Component {
     }
 
     componentDidMount = () => {
-        const url = "https://striveschool.herokuapp.com/api/profile/";
+        // const url = "https://striveschool.herokuapp.com/api/profile/";
+        const url = "https://linkedin-team.herokuapp.com/profiles"
 
         const username = 'user24';
         const password = '48D4vaVh6Ra3DD8w';
@@ -21,21 +22,24 @@ class SideContent extends React.Component {
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization', 'Basic ' + btoa(username + ":" + password));
 
-        fetch(url, {
-            method: "GET",
-            headers: headers,
-        })
+        fetch(url)
+
+            // fetch(url, {
+            //     method: "GET",
+            //     headers: headers,
+            // })
             .then((response) => {
                 if (response.ok) {
                     return response.json();
                 }
             })
             .then((users) => {
-                this.setState({ users })
+                this.setState({ users: users.data })
             })
     }
 
     render() {
+        console.log(this.state.users)
         return (
             <>
                 <Row className="pb-5 d-flex flex-column ">
@@ -53,17 +57,17 @@ class SideContent extends React.Component {
                     </Col>
                 </Row>
                 <p>People also viewed</p>
-                {this.state.users.slice(6, 12).map((user, i) => {
+                {this.state.users.map((user, i) => {
                     return (
                         <Row key={i} className="pb-3 d-flex align-items-center">
                             <Col md={4}>
                                 {user.image === undefined || user.image === ''
                                     ? <Image
                                         onClick={() => this.props.props.history.push("/profiles/" + user.username)}
-                                        src='https://img.icons8.com/officel/2x/user.png'
+                                        src='https://fr.toluna.com//dpolls_images/2019/07/17/786d4f74-f843-421d-bc48-f51472d086ce.jpg'
                                         style={{ height: "4rem", width: "4rem", border: "1px solid lightgray", borderRadius: "2rem" }}
                                         className="card-img img-fluid"
-                                        alt="image"
+                                    //alt="image"
                                     />
                                     : <Image
                                         onClick={() => this.props.props.history.push("/profiles/" + user.username)}

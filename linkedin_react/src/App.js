@@ -17,15 +17,16 @@ class App extends Component {
   }
 
   fetchUser = async () => {
-    await fetch("https://striveschool.herokuapp.com/api/profile/", {
-      headers: new Headers({
-        'Authorization': 'Basic ' + this.props.authoKey,
-        "Content-Type": "application/json",
-      }),
-    })
+    // await fetch("https://striveschool.herokuapp.com/api/profile/", {
+    //   headers: new Headers({
+    //     'Authorization': 'Basic ' + this.props.authoKey,
+    //     "Content-Type": "application/json",
+    //   }),
+    // })
+    await fetch("https://linkedin-team.herokuapp.com/profiles")
       .then(resp => resp.json())
       .then(respObj => this.setState({
-        users: respObj
+        users: respObj.data
       }))
   }
 
@@ -71,6 +72,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.users)
     return (
       <Router>
         <div className="App" >

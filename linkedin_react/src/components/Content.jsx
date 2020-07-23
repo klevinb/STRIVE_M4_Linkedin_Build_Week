@@ -17,12 +17,13 @@ class Content extends Component {
     }
 
     fetchFunction = async () => {
-        let resp = await fetch("https://striveschool.herokuapp.com/api/profile/" + this.state.userId, {
-            headers: new Headers({
-                'Authorization': 'Basic ' + this.props.authoKey,
-                "Content-Type": "application/json",
-            }),
-        })
+        // let resp = await fetch("https://striveschool.herokuapp.com/api/profile/" + this.state.userId, {
+        //     headers: new Headers({
+        //         'Authorization': 'Basic ' + this.props.authoKey,
+        //         "Content-Type": "application/json",
+        //     }),
+        // })
+        let resp = await fetch("https://linkedin-team.herokuapp.com/profiles/" + this.state.userId)
 
         if (resp.ok) {
             let respObj = await resp.json()
@@ -52,6 +53,7 @@ class Content extends Component {
     }
 
     render() {
+        console.log(this.state.userInfo)
         return (
             <Container className="content mt-4 mb-4">
                 {this.state.loading &&

@@ -20,16 +20,18 @@ class JumBotron extends Component {
         },
         editProfile: false
     }
+
+
     handleUpload = async () => {
         const photo = new FormData()
-        photo.append("profile", this.state.profile)
+        photo.append("userImage", this.state.profile)
 
-        let resp = await fetch("https://striveschool.herokuapp.com/api/profile/" + this.props.username + "/picture", {
+        let resp = await fetch("https://linkedin-team.herokuapp.com/profiles/" + this.props.username + "/picture", {
             method: "POST",
             body: photo,
-            headers: new Headers({
-                'Authorization': 'Basic ' + this.props.authoKey,
-            }),
+            // headers: new Headers({
+            //     'Authorization': 'Basic ' + this.props.authoKey,
+            // }),
         })
         console.log(resp)
 
@@ -37,13 +39,13 @@ class JumBotron extends Component {
 
     editProfileInfo = async (e) => {
         e.preventDefault()
-        let resp = await fetch("https://striveschool.herokuapp.com/api/profile/", {
+        let resp = await fetch("https://linkedin-team.herokuapp.com/profiles/" + this.props.username, {
             method: "PUT",
             body: JSON.stringify(this.state.profileInfo),
-            headers: new Headers({
-                'Authorization': 'Basic ' + this.props.authoKey,
-                "Content-Type": "application/json"
-            }),
+            // headers: new Headers({
+            //     'Authorization': 'Basic ' + this.props.authoKey,
+            //     "Content-Type": "application/json"
+            // }),
         })
 
         if (resp.ok) {

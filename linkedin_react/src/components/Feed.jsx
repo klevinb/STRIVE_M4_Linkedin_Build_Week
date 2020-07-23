@@ -22,12 +22,7 @@ class Feed extends Component {
     }
 
     fetchPosts = async () => {
-        await fetch("https://striveschool.herokuapp.com/api/posts/", {
-            headers: new Headers({
-                'Authorization': 'Basic ' + this.props.authoKey,
-                "Content-Type": "application/json",
-            }),
-        })
+        await fetch("https://linkedin-team.herokuapp.com/post")
             .then(resp => resp.json())
             .then(respObj => this.setState({
                 feeds: respObj.reverse(),
@@ -62,25 +57,25 @@ class Feed extends Component {
     }
 
     postNewPost = async () => {
-        const resp = await fetch("https://striveschool.herokuapp.com/api/posts/", {
+        const resp = await fetch("https://linkedin-team.herokuapp.com/post", {
             method: "POST",
             body: JSON.stringify(this.state.newPost),
-            headers: new Headers({
-                'Authorization': 'Basic ' + this.props.authoKey,
-                "Content-Type": "application/json",
-            }),
+            // headers: new Headers({
+            //     'Authorization': 'Basic ' + this.props.authoKey,
+            //     "Content-Type": "application/json",
+            // }),
         })
         const data = await resp.json()
         const id = data._id
 
         setTimeout(async () => {
 
-            const resp = await fetch("https://striveschool.herokuapp.com/api/posts/" + id, {
+            const resp = await fetch("https://linkedin-team.herokuapp.com/post" + id + "/image", {
                 method: "POST",
                 body: this.state.image,
-                headers: new Headers({
-                    'Authorization': 'Basic ' + this.props.authoKey,
-                }),
+                // headers: new Headers({
+                //     'Authorization': 'Basic ' + this.props.authoKey,
+                // }),
             }, 2000)
         })
 
@@ -96,6 +91,9 @@ class Feed extends Component {
 
 
     render() {
+        // console.log(this.state.feeds)
+        // console.log(this.props.users)
+        console.log(this.state.newPost)
         return (
 
             <Container className="content mt-4 mb-4">
